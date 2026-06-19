@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- REPLACE "Parks Digital" everywhere with your real business name -->
+<title>Parks Digital — Lead capture for Houston service businesses</title>
+<meta name="description" content="We help Houston home-service businesses stop losing jobs to missed calls — with instant text-back, Google Profile management, and email that lands." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16263F; --navy-deep:#0F1C30; --paper:#F5F7FA; --white:#FFFFFF;
+    --signal:#F2864B; --signal-dark:#D96B2C; --success:#2FA66A;
+    --slate:#4A5568; --line:#E3E7EC;
+    --display:'Space Grotesk',sans-serif; --body:'IBM Plex Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-0.02em}
+  .brand span{color:var(--signal)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.95rem;color:var(--slate);font-weight:500}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{font-family:var(--display);font-weight:600;background:var(--signal);color:#fff;padding:11px 20px;border-radius:8px;font-size:.95rem;display:inline-block;transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:var(--signal-dark);transform:translateY(-1px)}
+  .nav .btn{padding:9px 18px}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+  /* hero */
+  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 70%);padding:84px 0 72px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.5rem);font-weight:700;margin:18px 0 20px}
+  .hero h1 em{font-style:normal;color:var(--signal)}
+  .hero p.lede{font-size:1.16rem;color:var(--slate);max-width:30em;margin-bottom:30px}
+  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
+
+  /* phone signature */
+  .phone{justify-self:center;width:262px;background:var(--navy-deep);border-radius:30px;padding:14px;box-shadow:0 30px 60px -20px rgba(16,28,48,.4);border:1px solid #21344f}
+  .phone-screen{background:#0a1422;border-radius:20px;padding:20px 16px;min-height:380px;display:flex;flex-direction:column;gap:12px}
+  .missed{background:#16263F;border-left:3px solid var(--signal);border-radius:10px;padding:12px 14px;color:#fff}
+  .missed .lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);font-weight:600;font-family:var(--display)}
+  .missed .num{font-size:1.02rem;font-weight:600;margin-top:3px}
+  .missed .time{font-size:.78rem;color:#8597b0}
+  .bubble{max-width:86%;padding:11px 14px;border-radius:16px;font-size:.9rem;opacity:0;transform:translateY(10px);animation:rise .5s ease forwards}
+  .bubble.out{align-self:flex-end;background:var(--signal);color:#fff;border-bottom-right-radius:5px;animation-delay:.5s}
+  .bubble.in{align-self:flex-start;background:#1d2c44;color:#e8eef6;border-bottom-left-radius:5px;animation-delay:1.5s}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.bubble{animation:none;opacity:1;transform:none}}
+
+  /* sections */
+  section{padding:76px 0}
+  .sec-head{max-width:38em;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:700;margin:14px 0 12px}
+  .sec-head p{color:var(--slate);font-size:1.08rem}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color .2s ease,transform .2s ease}
+  .card:hover{border-color:var(--signal);transform:translateY(-3px)}
+  .card .ic{width:46px;height:46px;border-radius:11px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
+  .card h3{font-size:1.22rem;font-weight:600;margin-bottom:10px}
+  .card p{color:var(--slate);font-size:.98rem}
+
+  /* band */
+  .band{background:var(--ink);color:#fff}
+  .band .wrap{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .band h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;max-width:18em;color:#fff}
+  .band h2 em{font-style:normal;color:var(--signal)}
+
+  /* about */
+  .about{background:var(--paper)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+  .about p{color:var(--slate);font-size:1.05rem;margin-bottom:16px}
+  .creds{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .creds li{display:flex;gap:11px;align-items:flex-start;font-weight:500}
+  .creds .chk{color:var(--success);font-weight:700}
+
+  /* contact */
+  .contact-box{background:var(--ink);border-radius:18px;padding:50px;color:#fff;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+  .contact-box h2{color:#fff;font-size:2rem;margin-bottom:12px}
+  .contact-box p{color:#b6c2d4;font-size:1.05rem}
+  .contact-info{font-size:1.05rem}
+  .contact-info a{color:var(--signal);font-weight:600}
+  .contact-info .row{margin-bottom:12px}
+  .contact-info .k{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#8597b0;font-family:var(--display);margin-bottom:2px}
+
+  /* footer + privacy */
+  footer{border-top:1px solid var(--line);padding:40px 0;font-size:.92rem;color:var(--slate)}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px}
+  .privacy{font-size:.86rem;color:#73808f;max-width:none}
+  .privacy h3{font-family:var(--display);font-size:1rem;color:var(--ink);margin:18px 0 6px}
+  .privacy p{margin-bottom:8px}
+
+  @media (max-width:860px){
+    .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
+    .phone{order:-1}
+    .cards{grid-template-columns:1fr}
+    .contact-box{grid-template-columns:1fr;padding:36px}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+  }
+  :focus-visible{outline:3px solid var(--signal);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Parks<span>Digital</span></div>
+    <nav class="nav-links" id="nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn">Free audit</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">For Houston home-service businesses</span>
+      <h1>The calls you miss are <em>jobs you lose.</em></h1>
+      <p class="lede">When you're on a job and can't pick up, that caller dials the next company on Google. We text them back in seconds, keep your Google profile working, and make sure your emails actually land — so more calls turn into paying work.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn">Get a free 2-minute audit</a>
+        <a href="#services" class="ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="phone" aria-hidden="true">
+      <div class="phone-screen">
+        <div class="missed">
+          <div class="lbl">Missed call</div>
+          <div class="num">(281) 555-0147</div>
+          <div class="time">Today, 2:14 PM</div>
+        </div>
+        <div class="bubble out">Hi! Sorry we missed your call. How can we help? Reply here and we'll get right back to you.</div>
+        <div class="bubble in">My AC stopped cooling — can someone come today?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Three ways we keep customers from slipping away</h2>
+      <p>Simple, done-for-you systems that capture the leads you're already paying to get.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">📞</div>
+        <h3>Missed-call text-back</h3>
+        <p>Miss a call and an instant text goes out: "Sorry we missed you — how can we help?" The lead stays a conversation with you instead of a call to the next company.</p>
+      </div>
+      <div class="card">
+        <div class="ic">📍</div>
+        <h3>Google profile management</h3>
+        <p>We keep your Google Business Profile sharp — photos, hours, posts, and review replies — so you show up when nearby customers search for what you do.</p>
+      </div>
+      <div class="card">
+        <div class="ic">✉️</div>
+        <h3>Email that actually lands</h3>
+        <p>We set up your email the right way so your quotes and follow-ups reach the inbox instead of the spam folder — and nobody can spoof your name.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>A missed call rarely calls back. They call <em>the next company.</em></h2>
+    <a href="#contact" class="btn">Stop the leak</a>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">Who you're working with</span>
+      <h2 style="font-size:2rem;font-weight:700;margin:14px 0 18px">Local, technical, and built for trades.</h2>
+      <p>Parks Digital is a Houston-based technology service. I build the same lead-capture systems big companies rely on — and set them up for local service businesses that don't have time to wrestle with software.</p>
+      <p>No long contracts, no jargon. You keep doing the work; I make sure the phone, the inbox, and your Google listing are all pulling their weight.</p>
+    </div>
+    <ul class="creds">
+      <li><span class="chk">✓</span> Master's in Computer Science</li>
+      <li><span class="chk">✓</span> Security-certified (Security+, ISC2 CC)</li>
+      <li><span class="chk">✓</span> Houston-based, serving the surrounding metro</li>
+      <li><span class="chk">✓</span> Month-to-month — keep me as long as it's working</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>See what you're missing — free.</h2>
+        <p>I'll check your phone follow-up, your Google profile, and your email setup, then show you exactly where leads are leaking. Takes two minutes, no obligation.</p>
+      </div>
+      <div class="contact-info">
+        <!-- REPLACE with your real business email + phone -->
+        <div class="row"><span class="k">Email</span><a href="mailto:hello@parksdigital.com">hello@parksdigital.com</a></div>
+        <div class="row"><span class="k">Phone</span><a href="tel:+10000000000">(000) 000-0000</a></div>
+        <div class="row"><span class="k">Area</span>Houston &amp; surrounding metro</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand">Parks<span style="color:var(--signal)">Digital</span></div>
+      <div>© 2026 Parks Digital. All rights reserved.</div>
+    </div>
+    <div class="privacy" id="privacy">
+      <h3>Privacy Policy</h3>
+      <p>Parks Digital ("we") respects your privacy. This page explains what we collect and how we use it.</p>
+      <p><strong>What we collect:</strong> contact details you provide (name, phone, email) and basic information about your business when you request an audit or become a client.</p>
+      <p><strong>How we use it:</strong> only to provide and improve our services and to communicate with you about them. We do not sell, rent, or share your personal information with third parties for their marketing.</p>
+      <p><strong>Text messaging:</strong> if you contact us or use a service we manage, you may receive SMS messages related to that service. Message and data rates may apply. You can opt out at any time by replying STOP, or reply HELP for help. Mobile information is never shared with third parties for marketing purposes.</p>
+      <p><strong>Contact:</strong> questions about this policy? Email hello@parksdigital.com.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // close mobile menu on link tap
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open')});
+  });
+</script>
+</body>
+</html>
