@@ -57,9 +57,9 @@
   .hero-col .tag{font-family:var(--display);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark);margin-bottom:14px}
   .hero-col h2{font-size:clamp(1.7rem,3.2vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px;font-family:var(--display);color:var(--ink)}
   .hero-col h2 em{font-style:normal;color:var(--signal)}
-  .hero-col p{color:var(--slate);font-size:1.03rem;margin-bottom:22px;flex-grow:1}
-  .hero-col .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
-  .hero-col .visual{margin-top:auto}
+  .hero-col p{color:var(--slate);font-size:1.03rem;margin-bottom:22px;min-height:7em}
+  .hero-col .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px;min-height:46px}
+  .hero-col .visual{margin-top:auto;display:flex;justify-content:center;align-items:flex-end}
   .hero-col .pending-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:14px}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
 
@@ -77,14 +77,14 @@
   @media (prefers-reduced-motion:reduce){.bubble{animation:none;opacity:1;transform:none}}
 
   /* terminal/scan visual - inside the vulnerability hero column */
-  .term{margin:0 auto;max-width:340px;background:#0a1422;border-radius:14px;padding:0;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f;overflow:hidden;font-family:'SFMono-Regular','Consolas','Liberation Mono',monospace;font-size:.78rem}
-  .term-head{background:#152136;padding:8px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #21344f}
-  .term-head .dot{width:9px;height:9px;border-radius:5px;background:#3a4658}
+  .term{margin:0 auto;width:100%;max-width:380px;background:#0a1422;border-radius:18px;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f;overflow:hidden;font-family:'SFMono-Regular','Consolas','Liberation Mono',monospace;font-size:.85rem;display:flex;flex-direction:column}
+  .term-head{background:#152136;padding:11px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #21344f}
+  .term-head .dot{width:10px;height:10px;border-radius:5px;background:#3a4658}
   .term-head .dot.r{background:#e06450}
   .term-head .dot.y{background:#e6b94a}
   .term-head .dot.g{background:#5cc371}
-  .term-head .ttl{margin-left:8px;color:#8597b0;font-size:.7rem;font-family:var(--display);font-weight:500}
-  .term-body{padding:14px 14px 16px;color:#cad6e8;line-height:1.55}
+  .term-head .ttl{margin-left:8px;color:#8597b0;font-size:.75rem;font-family:var(--display);font-weight:500}
+  .term-body{padding:20px 18px;color:#cad6e8;line-height:1.85;flex-grow:1;min-height:220px}
   .term-body .ln{display:block;opacity:0;animation:term-line .4s ease forwards}
   .term-body .ln:nth-child(1){animation-delay:.2s}
   .term-body .ln:nth-child(2){animation-delay:.7s}
