@@ -33,32 +33,72 @@
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{font-size:.95rem;color:var(--slate);font-weight:500}
   .nav-links a:hover{color:var(--ink)}
+
+  /* services dropdown */
+  .has-drop{position:relative}
+  .has-drop > a{cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+  .has-drop > a::after{content:"▾";font-size:.7rem;color:var(--slate);transition:transform .15s ease}
+  .has-drop:hover > a::after,.has-drop:focus-within > a::after{transform:rotate(180deg);color:var(--ink)}
+  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:240px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
+  .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop a{display:block;padding:10px 14px;border-radius:8px;font-size:.95rem;color:var(--ink);font-weight:500}
+  .drop a:hover{background:var(--paper);color:var(--signal-dark)}
+  .drop a small{display:block;color:var(--slate);font-weight:400;font-size:.82rem;margin-top:2px;line-height:1.35}
   .btn{font-family:var(--display);font-weight:600;background:var(--signal);color:#fff;padding:11px 20px;border-radius:8px;font-size:.95rem;display:inline-block;transition:transform .15s ease,background .15s ease}
   .btn:hover{background:var(--signal-dark);transform:translateY(-1px)}
   .nav .btn{padding:9px 18px}
   .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 
-  /* hero */
-  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 70%);padding:84px 0 72px;border-bottom:1px solid var(--line)}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-  .hero h1{font-size:clamp(2.3rem,5vw,3.5rem);font-weight:700;margin:18px 0 20px}
-  .hero h1 em{font-style:normal;color:var(--signal)}
-  .hero p.lede{font-size:1.16rem;color:var(--slate);max-width:30em;margin-bottom:30px}
-  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  /* hero - split into two services */
+  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 70%);padding:64px 0 56px;border-bottom:1px solid var(--line)}
+  .hero-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+  .hero-col{background:#fff;border:1px solid var(--line);border-radius:18px;padding:38px 34px;display:flex;flex-direction:column;transition:border-color .2s ease,transform .2s ease}
+  .hero-col:hover{border-color:var(--signal);transform:translateY(-2px)}
+  .hero-col .tag{font-family:var(--display);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark);margin-bottom:14px}
+  .hero-col h2{font-size:clamp(1.7rem,3.2vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px;font-family:var(--display);color:var(--ink)}
+  .hero-col h2 em{font-style:normal;color:var(--signal)}
+  .hero-col p{color:var(--slate);font-size:1.03rem;margin-bottom:22px;flex-grow:1}
+  .hero-col .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
+  .hero-col .visual{margin-top:auto}
+  .hero-col .pending-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:14px}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
 
-  /* phone signature */
-  .phone{justify-self:center;width:262px;background:var(--navy-deep);border-radius:30px;padding:14px;box-shadow:0 30px 60px -20px rgba(16,28,48,.4);border:1px solid #21344f}
-  .phone-screen{background:#0a1422;border-radius:20px;padding:20px 16px;min-height:380px;display:flex;flex-direction:column;gap:12px}
-  .missed{background:#16263F;border-left:3px solid var(--signal);border-radius:10px;padding:12px 14px;color:#fff}
-  .missed .lbl{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);font-weight:600;font-family:var(--display)}
-  .missed .num{font-size:1.02rem;font-weight:600;margin-top:3px}
-  .missed .time{font-size:.78rem;color:#8597b0}
-  .bubble{max-width:86%;padding:11px 14px;border-radius:16px;font-size:.9rem;opacity:0;transform:translateY(10px);animation:rise .5s ease forwards}
+  /* phone signature - inside the lead-capture hero column */
+  .phone{margin:0 auto;width:230px;background:var(--navy-deep);border-radius:26px;padding:12px;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f}
+  .phone-screen{background:#0a1422;border-radius:18px;padding:16px 14px;min-height:260px;display:flex;flex-direction:column;gap:10px}
+  .missed{background:#16263F;border-left:3px solid var(--signal);border-radius:9px;padding:10px 12px;color:#fff}
+  .missed .lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);font-weight:600;font-family:var(--display)}
+  .missed .num{font-size:.92rem;font-weight:600;margin-top:2px}
+  .missed .time{font-size:.7rem;color:#8597b0}
+  .bubble{max-width:86%;padding:9px 12px;border-radius:14px;font-size:.82rem;opacity:0;transform:translateY(10px);animation:rise .5s ease forwards;line-height:1.35}
   .bubble.out{align-self:flex-end;background:var(--signal);color:#fff;border-bottom-right-radius:5px;animation-delay:.5s}
   .bubble.in{align-self:flex-start;background:#1d2c44;color:#e8eef6;border-bottom-left-radius:5px;animation-delay:1.5s}
   @keyframes rise{to{opacity:1;transform:translateY(0)}}
   @media (prefers-reduced-motion:reduce){.bubble{animation:none;opacity:1;transform:none}}
+
+  /* terminal/scan visual - inside the vulnerability hero column */
+  .term{margin:0 auto;max-width:340px;background:#0a1422;border-radius:14px;padding:0;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f;overflow:hidden;font-family:'SFMono-Regular','Consolas','Liberation Mono',monospace;font-size:.78rem}
+  .term-head{background:#152136;padding:8px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #21344f}
+  .term-head .dot{width:9px;height:9px;border-radius:5px;background:#3a4658}
+  .term-head .dot.r{background:#e06450}
+  .term-head .dot.y{background:#e6b94a}
+  .term-head .dot.g{background:#5cc371}
+  .term-head .ttl{margin-left:8px;color:#8597b0;font-size:.7rem;font-family:var(--display);font-weight:500}
+  .term-body{padding:14px 14px 16px;color:#cad6e8;line-height:1.55}
+  .term-body .ln{display:block;opacity:0;animation:term-line .4s ease forwards}
+  .term-body .ln:nth-child(1){animation-delay:.2s}
+  .term-body .ln:nth-child(2){animation-delay:.7s}
+  .term-body .ln:nth-child(3){animation-delay:1.2s}
+  .term-body .ln:nth-child(4){animation-delay:1.7s}
+  .term-body .ln:nth-child(5){animation-delay:2.1s}
+  .term-body .ln:nth-child(6){animation-delay:2.5s}
+  @keyframes term-line{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.term-body .ln{animation:none;opacity:1}}
+  .term .pfx{color:#5fb4d1}
+  .term .ok{color:#5cc371;font-weight:600}
+  .term .crit{color:#e06450;font-weight:600}
+  .term .warn{color:#e6b94a;font-weight:600}
+  .term .dim{color:#6b7888}
 
   /* sections */
   section{padding:76px 0}
@@ -104,13 +144,15 @@
   .privacy p{margin-bottom:8px}
 
   @media (max-width:860px){
-    .hero-grid,.about-grid{grid-template-columns:1fr;gap:40px}
-    .phone{order:-1}
+    .hero-split{grid-template-columns:1fr;gap:20px}
+    .about-grid{grid-template-columns:1fr;gap:40px}
     .cards{grid-template-columns:1fr}
     .contact-box{grid-template-columns:1fr;padding:36px}
     .nav-links{display:none}
     .menu-btn{display:block}
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    .nav-links.open .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0;background:transparent}
+    .has-drop > a::after{display:none}
   }
   :focus-visible{outline:3px solid var(--signal);outline-offset:2px;border-radius:4px}
 </style>
@@ -121,9 +163,13 @@
   <div class="wrap nav">
     <div class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></div>
     <nav class="nav-links" id="nav">
-      <a href="#services">Services</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="vulnerability.html">Vulnerability test</a>
+      <div class="has-drop">
+        <a href="#services" tabindex="0">Services</a>
+        <div class="drop" role="menu">
+          <a href="pricing.html">Lead capture <small>Missed calls, email, Google profile</small></a>
+          <a href="vulnerability.html">Vulnerability assessment <small>Find security gaps before they hurt</small></a>
+        </div>
+      </div>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#contact" class="btn">Free audit</a>
@@ -133,27 +179,59 @@
 </header>
 
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">For Texas home-service businesses</span>
-      <h1>The calls you miss are <em>jobs you lose.</em></h1>
-      <p class="lede">When you're on a job and can't pick up, that caller dials the next company on Google. We text them back in seconds, keep your Google profile working, and make sure your emails actually land — so more calls turn into paying work.</p>
-      <div class="hero-cta">
-        <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="btn">Get a free 2-minute audit</a>
-        <a href="pricing.html" class="ghost">See pricing</a>
+  <div class="wrap hero-split">
+
+    <!-- LEFT: Lead capture -->
+    <div class="hero-col">
+      <div class="tag">Lead capture</div>
+      <h2>The calls you miss are <em>jobs you lose.</em></h2>
+      <p>When you're on a job and can't pick up, that caller dials the next company. We text them back in seconds, keep your Google profile working, and make sure your emails actually land &mdash; so more calls turn into paying work.</p>
+      <div class="actions">
+        <a href="pricing.html" class="btn">See plans</a>
+        <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="ghost">Free 2-minute audit</a>
       </div>
-    </div>
-    <div class="phone" aria-hidden="true">
-      <div class="phone-screen">
-        <div class="missed">
-          <div class="lbl">Missed call</div>
-          <div class="num">(281) 555-0147</div>
-          <div class="time">Today, 2:14 PM</div>
+      <div class="visual">
+        <div class="phone" aria-hidden="true">
+          <div class="phone-screen">
+            <div class="missed">
+              <div class="lbl">Missed call</div>
+              <div class="num">(281) 555-0147</div>
+              <div class="time">Today, 2:14 PM</div>
+            </div>
+            <div class="bubble out">Hi! Sorry we missed your call. How can we help? Reply here and we'll get right back to you.</div>
+            <div class="bubble in">My AC stopped cooling &mdash; can someone come today?</div>
+          </div>
         </div>
-        <div class="bubble out">Hi! Sorry we missed your call. How can we help? Reply here and we'll get right back to you.</div>
-        <div class="bubble in">My AC stopped cooling — can someone come today?</div>
       </div>
     </div>
+
+    <!-- RIGHT: Vulnerability assessment -->
+    <div class="hero-col">
+      <div class="tag">Vulnerability assessment</div>
+      <h2>Find the gaps <em>before someone else does.</em></h2>
+      <p>A clear, no-jargon security check of your network and the systems your business depends on. We scan, prioritize the real risks, and hand you a plain-English report with what to fix first.</p>
+      <div class="actions">
+        <a href="vulnerability.html" class="btn">Request a quote</a>
+        <a href="vulnerability.html#request" class="ghost">How it works</a>
+      </div>
+      <div class="visual">
+        <div class="term" aria-hidden="true">
+          <div class="term-head">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="ttl">sentriq &mdash; scan results</span>
+          </div>
+          <div class="term-body">
+            <span class="ln"><span class="pfx">$</span> sentriq-scan --target client.local</span>
+            <span class="ln"><span class="dim">[*] Discovering hosts...</span> <span class="ok">9 found</span></span>
+            <span class="ln"><span class="dim">[*] Probing services...</span> <span class="ok">done</span></span>
+            <span class="ln"><span class="crit">[!] CRITICAL</span> <span class="dim">CVE-2024-3094 &middot; router admin exposed</span></span>
+            <span class="ln"><span class="warn">[!] HIGH</span> <span class="dim">Weak TLS on mail gateway</span></span>
+            <span class="ln"><span class="ok">[✓]</span> <span class="dim">Report ready &middot; 12 findings prioritized</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
