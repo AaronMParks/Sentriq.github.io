@@ -34,6 +34,17 @@
   .nav-links a{font-size:.95rem;color:var(--slate);font-weight:500}
   .nav-links a:hover{color:var(--ink)}
   .nav-links a.current{color:var(--ink);font-weight:600}
+  .has-drop{position:relative}
+  .has-drop > a{cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+  .has-drop > a.current{color:var(--ink);font-weight:600}
+  .has-drop > a::after{content:"▾";font-size:.7rem;color:var(--slate);transition:transform .15s ease}
+  .has-drop:hover > a::after,.has-drop:focus-within > a::after{transform:rotate(180deg);color:var(--ink)}
+  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:240px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
+  .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop a{display:block;padding:10px 14px;border-radius:8px;font-size:.95rem;color:var(--ink);font-weight:500}
+  .drop a:hover{background:var(--paper);color:var(--signal-dark)}
+  .drop a.current{background:var(--paper);color:var(--signal-dark)}
+  .drop a small{display:block;color:var(--slate);font-weight:400;font-size:.82rem;margin-top:2px;line-height:1.35}
   .btn{font-family:var(--display);font-weight:600;background:var(--signal);color:#fff;padding:11px 20px;border-radius:8px;font-size:.95rem;display:inline-block;transition:transform .15s ease,background .15s ease;border:0;cursor:pointer}
   .btn:hover{background:var(--signal-dark);transform:translateY(-1px)}
   .btn.ghost-btn{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
@@ -107,6 +118,8 @@
     .nav-links{display:none}
     .menu-btn{display:block}
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    .nav-links.open .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0;background:transparent}
+    .has-drop > a::after{display:none}
   }
   :focus-visible{outline:3px solid var(--signal);outline-offset:2px;border-radius:4px}
 </style>
@@ -117,9 +130,13 @@
   <div class="wrap nav">
     <a href="index.html" class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></a>
     <nav class="nav-links" id="nav">
-      <a href="index.html#services">Services</a>
-      <a href="pricing.html" class="current">Pricing</a>
-      <a href="vulnerability.html">Vulnerability test</a>
+      <div class="has-drop">
+        <a href="#" class="current" tabindex="0">Services</a>
+        <div class="drop" role="menu">
+          <a href="pricing.html" class="current">Lead capture <small>Missed calls, email, Google profile</small></a>
+          <a href="vulnerability.html">Vulnerability assessment <small>Find security gaps before they hurt</small></a>
+        </div>
+      </div>
       <a href="index.html#about">About</a>
       <a href="index.html#contact">Contact</a>
       <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request" class="btn">Free audit</a>
