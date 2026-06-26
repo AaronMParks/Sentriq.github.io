@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sentriq — Pricing</title>
+<meta name="description" content="Three plans for Texas home-service businesses: capture missed calls, protect your email, and own your Google profile. Month-to-month, no long contracts." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16263F; --navy-deep:#0F1C30; --paper:#F5F7FA; --white:#FFFFFF;
+    --signal:#F2864B; --signal-dark:#D96B2C; --success:#2FA66A;
+    --slate:#4A5568; --line:#E3E7EC;
+    --display:'Space Grotesk',sans-serif; --body:'IBM Plex Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
+  .brand .nm{font-weight:700;font-size:1.34rem;letter-spacing:-0.02em}
+  .brand .sub{font-size:.6rem;letter-spacing:.36em;text-transform:uppercase;color:var(--signal);align-self:flex-end;margin-top:3px;font-weight:600}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.95rem;color:var(--slate);font-weight:500}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.current{color:var(--ink);font-weight:600}
+  .has-drop{position:relative}
+  .has-drop > a{cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+  .has-drop > a.current{color:var(--ink);font-weight:600}
+  .has-drop > a::after{content:"▾";font-size:.7rem;color:var(--slate);transition:transform .15s ease}
+  .has-drop:hover > a::after,.has-drop:focus-within > a::after{transform:rotate(180deg);color:var(--ink)}
+  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:240px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
+  .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop a{display:block;padding:10px 14px;border-radius:8px;font-size:.95rem;color:var(--ink);font-weight:500}
+  .drop a:hover{background:var(--paper);color:var(--signal-dark)}
+  .drop a.current{background:var(--paper);color:var(--signal-dark)}
+  .drop a small{display:block;color:var(--slate);font-weight:400;font-size:.82rem;margin-top:2px;line-height:1.35}
+  .btn{font-family:var(--display);font-weight:600;background:var(--signal);color:#fff;padding:11px 20px;border-radius:8px;font-size:.95rem;display:inline-block;transition:transform .15s ease,background .15s ease;border:0;cursor:pointer}
+  .btn:hover{background:var(--signal-dark);transform:translateY(-1px)}
+  .btn.ghost-btn{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost-btn:hover{border-color:var(--ink);background:#fff}
+  .nav .btn{padding:9px 18px}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+  /* page hero */
+  .page-hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 70%);padding:72px 0 36px;border-bottom:1px solid var(--line);text-align:center}
+  .page-hero h1{font-size:clamp(2.1rem,4.5vw,3rem);font-weight:700;margin:14px 0 14px}
+  .page-hero h1 em{font-style:normal;color:var(--signal)}
+  .page-hero p{color:var(--slate);font-size:1.12rem;max-width:42em;margin:0 auto}
+
+  /* tier cards */
+  .tiers{padding:56px 0 30px}
+  .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .tier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 26px;display:flex;flex-direction:column;transition:border-color .2s ease,transform .2s ease;position:relative}
+  .tier:hover{border-color:var(--signal);transform:translateY(-3px)}
+  .tier.featured{border:2px solid var(--signal);padding-top:28px}
+  .ribbon{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--signal);color:#fff;font-family:var(--display);font-weight:700;font-size:.7rem;letter-spacing:.16em;padding:5px 13px;border-radius:20px;text-transform:uppercase}
+  .tier h3{font-size:1.32rem;font-weight:700;margin-bottom:4px}
+  .tier .tag{color:var(--slate);font-size:.92rem;margin-bottom:18px}
+  .tier .price-big{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+  .tier .price-big .amt{font-family:var(--display);font-size:2.6rem;font-weight:700;color:var(--ink);letter-spacing:-0.04em;line-height:1}
+  .tier .price-big .lbl{color:#8390A0;font-size:.86rem}
+  .tier .mo{color:var(--slate);font-size:1rem;margin-bottom:20px}
+  .tier .mo b{color:var(--ink);font-weight:700;font-size:1.12rem}
+  .tier ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px;flex-grow:1}
+  .tier li{display:flex;gap:9px;align-items:flex-start;font-size:.95rem;color:#3A4658}
+  .tier li .chk{color:var(--success);font-weight:700;flex:0 0 auto}
+  .tier li.plus{color:#8390A0;font-style:italic;font-size:.88rem;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:2px}
+  .tier .btn{display:block;text-align:center}
+
+  /* details section */
+  .details{background:var(--paper);padding:56px 0}
+  .details h2{font-size:clamp(1.6rem,2.8vw,2rem);margin-bottom:8px}
+  .details .lead{color:var(--slate);font-size:1.05rem;margin-bottom:36px;max-width:38em}
+  .detail-block{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px;margin-bottom:22px;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start}
+  .detail-block h3{font-size:1.5rem;font-weight:700;margin-bottom:6px}
+  .detail-block .sub{color:var(--signal-dark);font-family:var(--display);font-weight:600;font-size:.86rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .detail-block p{color:var(--slate);margin-bottom:14px}
+  .detail-block .right{background:var(--paper);border-radius:12px;padding:22px}
+  .detail-block .right .pr{font-family:var(--display);font-size:1.9rem;font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-0.03em}
+  .detail-block .right .pr-sub{color:var(--slate);font-size:.92rem;margin-bottom:14px}
+  .detail-block .right .ms{font-family:var(--display);color:var(--ink);font-weight:600;margin-bottom:18px}
+  .detail-block .right .ms b{font-size:1.18rem}
+
+  /* faq strip */
+  .faq{padding:56px 0}
+  .faq h2{font-size:clamp(1.6rem,2.8vw,2rem);margin-bottom:28px;text-align:center}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+  .faq-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+  .faq-card h4{font-family:var(--display);font-weight:600;font-size:1.02rem;margin-bottom:6px;color:var(--ink)}
+  .faq-card p{color:var(--slate);font-size:.95rem}
+
+  /* footer cta */
+  .foot-cta{background:var(--ink);color:#fff;padding:54px 0;text-align:center}
+  .foot-cta h2{color:#fff;font-size:clamp(1.6rem,2.8vw,2.1rem);margin-bottom:10px}
+  .foot-cta h2 em{font-style:normal;color:var(--signal)}
+  .foot-cta p{color:#b6c2d4;font-size:1.05rem;max-width:36em;margin:0 auto 22px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:30px 0;font-size:.92rem;color:var(--slate)}
+  .foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+
+  @media (max-width:860px){
+    .tier-grid{grid-template-columns:1fr}
+    .tier.featured{order:-1}
+    .detail-block{grid-template-columns:1fr;padding:26px}
+    .faq-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    .nav-links.open .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0;background:transparent}
+    .has-drop > a::after{display:none}
+  }
+  :focus-visible{outline:3px solid var(--signal);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></a>
+    <nav class="nav-links" id="nav">
+      <div class="has-drop">
+        <a href="#" class="current" tabindex="0">Services</a>
+        <div class="drop" role="menu">
+          <a href="/pricing/" class="current">Lead capture <small>Missed calls, email, Google profile</small></a>
+          <a href="/vulnerability/">Vulnerability assessment <small>Find security gaps before they hurt</small></a>
+        </div>
+      </div>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request" class="btn">Free audit</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h1>Pick a plan. We handle the rest.</h1>
+    <p>Done-for-you systems that capture leads, protect your email, and keep your Google profile working. Month-to-month — cancel anytime.</p>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="wrap">
+    <div class="tier-grid">
+
+      <!-- Essentials -->
+      <div class="tier" id="essentials-card">
+        <h3>Essentials</h3>
+        <div class="tag">Never miss a lead</div>
+        <div class="price-big"><span class="amt">$300</span><span class="lbl">one-time setup</span></div>
+        <div class="mo">then <b>$99</b> / month</div>
+        <ul>
+          <li><span class="chk">✓</span>Missed-call text-back — instant auto-reply</li>
+          <li><span class="chk">✓</span>Dedicated business text line</li>
+          <li><span class="chk">✓</span>Replies forwarded to your phone</li>
+          <li><span class="chk">✓</span>Every caller captured — no lost leads</li>
+          <li><span class="chk">✓</span>Monthly leads-recovered summary</li>
+        </ul>
+        <a href="https://buy.stripe.com/14AcN55kI4Va7pN7iW6AM02" class="btn">Get started</a>
+      </div>
+
+      <!-- Professional (featured) -->
+      <div class="tier featured" id="professional-card">
+        <div class="ribbon">Most popular</div>
+        <h3>Professional</h3>
+        <div class="tag">Capture &amp; protect</div>
+        <div class="price-big"><span class="amt">$500</span><span class="lbl">one-time setup</span></div>
+        <div class="mo">then <b>$149</b> / month</div>
+        <ul>
+          <li class="plus">Everything in Essentials, plus:</li>
+          <li><span class="chk">✓</span>Quotes &amp; invoices land in the inbox, not spam</li>
+          <li><span class="chk">✓</span>Stop scammers from impersonating your business</li>
+          <li><span class="chk">✓</span>Ongoing inbox-placement monitoring</li>
+          <li><span class="chk">✓</span>Look trusted &amp; professional in every inbox</li>
+        </ul>
+        <a href="https://buy.stripe.com/6oU00jaF273ibG3gTw6AM00" class="btn">Get started</a>
+      </div>
+
+      <!-- Complete -->
+      <div class="tier" id="complete-card">
+        <h3>Complete</h3>
+        <div class="tag">Get found &amp; chosen</div>
+        <div class="price-big"><span class="amt">$750</span><span class="lbl">one-time setup</span></div>
+        <div class="mo">then <b>$299</b> / month</div>
+        <ul>
+          <li class="plus">Everything in Professional, plus:</li>
+          <li><span class="chk">✓</span>Show up when nearby customers search Google</li>
+          <li><span class="chk">✓</span>Google profile kept fresh — photos, posts, hours</li>
+          <li><span class="chk">✓</span>Every review answered professionally, fast</li>
+          <li><span class="chk">✓</span>Rank higher locally &amp; win more calls</li>
+        </ul>
+        <a href="https://buy.stripe.com/eVq8wPcNa0EU7pN0Uy6AM01" class="btn">Get started</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="wrap">
+    <h2>What's actually included</h2>
+    <p class="lead">More detail on each plan so you know exactly what you're getting before you click Get started.</p>
+
+    <!-- Essentials detail -->
+    <div class="detail-block" id="essentials">
+      <div>
+        <div class="sub">Essentials</div>
+        <h3>Never miss a lead from a missed call.</h3>
+        <p>When you're on a job and can't pick up, the caller dials the next company. We change that. Within seconds of a missed call, an automatic text goes out — friendly, branded, and immediate — turning a lost lead into a live conversation. Replies route straight to your phone, and every caller is captured so nothing slips through.</p>
+        <p>You get a dedicated business text line (no risk to your personal number), a clean record of every recovered caller, and a monthly summary so you can see what's coming back.</p>
+      </div>
+      <div class="right">
+        <div class="pr">$300<span style="font-size:.95rem;color:#8390A0;font-weight:400"> setup</span></div>
+        <div class="pr-sub">one-time</div>
+        <div class="ms">then <b>$99</b> / month</div>
+        <a href="https://buy.stripe.com/14AcN55kI4Va7pN7iW6AM02" class="btn">Get started</a>
+      </div>
+    </div>
+
+    <!-- Professional detail -->
+    <div class="detail-block" id="professional">
+      <div>
+        <div class="sub">Professional · Most popular</div>
+        <h3>Everything in Essentials — plus an inbox you can trust.</h3>
+        <p>If your quotes, invoices, and follow-ups land in spam, jobs go cold for no reason. We configure your email the right way at the technical layer, so every message reaches the customer's inbox, looks legitimate, and can't be spoofed by scammers pretending to be your business.</p>
+        <p>You get full deliverability setup, anti-impersonation protection across your domain, and ongoing monitoring so it stays that way as your sending volume grows. The hygiene most shops are missing — done once and watched after.</p>
+      </div>
+      <div class="right">
+        <div class="pr">$500<span style="font-size:.95rem;color:#8390A0;font-weight:400"> setup</span></div>
+        <div class="pr-sub">one-time</div>
+        <div class="ms">then <b>$149</b> / month</div>
+        <a href="https://buy.stripe.com/6oU00jaF273ibG3gTw6AM00" class="btn">Get started</a>
+      </div>
+    </div>
+
+    <!-- Complete detail -->
+    <div class="detail-block" id="complete">
+      <div>
+        <div class="sub">Complete</div>
+        <h3>Everything in Professional — plus your Google profile, handled.</h3>
+        <p>Your Google Business Profile is how nearby customers find you and decide whether to call. We keep it sharp: accurate hours and services, fresh photos and posts that show recent work, and prompt, professional replies to every review — good or bad. The result is a profile that ranks higher locally and reads as the obvious choice.</p>
+        <p>This is the tier where Sentriq is actively touching your account every week — drafting posts, responding to reviews, and tuning for local search. You stay in the loop with a simple monthly recap.</p>
+      </div>
+      <div class="right">
+        <div class="pr">$750<span style="font-size:.95rem;color:#8390A0;font-weight:400"> setup</span></div>
+        <div class="pr-sub">one-time</div>
+        <div class="ms">then <b>$299</b> / month</div>
+        <a href="https://buy.stripe.com/eVq8wPcNa0EU7pN0Uy6AM01" class="btn">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2>Common questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <h4>Is there a contract?</h4>
+        <p>No long-term commitment. Plans are month-to-month — cancel anytime from your customer portal. We earn your business every month.</p>
+      </div>
+      <div class="faq-card">
+        <h4>Who owns the phone number?</h4>
+        <p>You do. The dedicated business line provisioned for your account stays with you. We never hold your number or your customer data hostage.</p>
+      </div>
+      <div class="faq-card">
+        <h4>How long does setup take?</h4>
+        <p>Usually under a week from signup to live. Email and Google profile work depend on access we'll request during onboarding.</p>
+      </div>
+      <div class="faq-card">
+        <h4>Can I change plans later?</h4>
+        <p>Yes — upgrade or downgrade anytime from your customer portal. Setup fees aren't recharged if you upgrade later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="foot-cta">
+  <div class="wrap">
+    <h2>Not sure which plan? <em>Start with a free audit.</em></h2>
+    <p>Two-minute check of your phone follow-up, Google profile, and email setup — and we'll tell you exactly where leads are leaking.</p>
+    <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="btn">Request my free audit</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-row">
+    <a href="/" class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></a>
+    <div>© 2026 Sentriq. All rights reserved. · <a href="/#privacy" style="color:var(--slate)">Privacy</a></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('#nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open')});
+  });
+</script>
+</body>
+</html>
