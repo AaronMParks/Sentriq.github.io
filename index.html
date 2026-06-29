@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sentriq — Lead capture for Texas service businesses</title>
-<meta name="description" content="We help Texas home-service businesses stop losing jobs to missed calls — with instant text-back, Google Profile management, and email that lands." />
+<title>Sentriq Digital — Get found. Keep leads.</title>
+<meta name="description" content="Sentriq helps Texas service businesses get found online and capture every lead — through website design, SEO, Google Profile management, and automated lead capture." />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,6 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
 
-  /* header */
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
@@ -37,12 +36,11 @@
   .login-link:hover{color:var(--signal-dark)}
   .login-link svg{width:15px;height:15px;opacity:.85}
 
-  /* services dropdown */
   .has-drop{position:relative}
   .has-drop > a{cursor:pointer;display:inline-flex;align-items:center;gap:5px}
   .has-drop > a::after{content:"▾";font-size:.7rem;color:var(--slate);transition:transform .15s ease}
   .has-drop:hover > a::after,.has-drop:focus-within > a::after{transform:rotate(180deg);color:var(--ink)}
-  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:240px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
+  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:280px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
   .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
   .drop a{display:block;padding:10px 14px;border-radius:8px;font-size:.95rem;color:var(--ink);font-weight:500}
   .drop a:hover{background:var(--paper);color:var(--signal-dark)}
@@ -52,75 +50,42 @@
   .nav .btn{padding:9px 18px}
   .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 
-  /* hero - split into two services */
-  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 70%);padding:64px 0 56px;border-bottom:1px solid var(--line)}
-  .hero-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
-  .hero-col{background:#fff;border:1px solid var(--line);border-radius:18px;padding:38px 34px;display:flex;flex-direction:column;transition:border-color .2s ease,transform .2s ease}
-  .hero-col:hover{border-color:var(--signal);transform:translateY(-2px)}
-  .hero-col .tag{font-family:var(--display);font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark);margin-bottom:14px}
-  .hero-col h2{font-size:clamp(1.7rem,3.2vw,2.2rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px;font-family:var(--display);color:var(--ink)}
-  .hero-col h2 em{font-style:normal;color:var(--signal)}
-  .hero-col p{color:var(--slate);font-size:1.03rem;margin-bottom:22px;min-height:7em}
-  .hero-col .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:24px;min-height:46px}
-  .hero-col .visual{margin-top:auto;display:flex;justify-content:center;align-items:flex-end}
-  .hero-col .pending-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:14px}
+  /* hero */
+  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 72%);padding:84px 0 72px;border-bottom:1px solid var(--line)}
+  .hero-inner{max-width:50em}
+  .hero h1{font-size:clamp(2.3rem,5.2vw,3.6rem);font-weight:700;line-height:1.05;margin:16px 0 20px}
+  .hero h1 em{font-style:normal;color:var(--signal)}
+  .hero p{color:var(--slate);font-size:1.18rem;max-width:34em;margin-bottom:30px}
+  .hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
 
-  /* phone signature - inside the lead-capture hero column */
-  .phone{margin:0 auto;width:230px;background:var(--navy-deep);border-radius:26px;padding:12px;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f}
-  .phone-screen{background:#0a1422;border-radius:18px;padding:16px 14px;min-height:260px;display:flex;flex-direction:column;gap:10px}
-  .missed{background:#16263F;border-left:3px solid var(--signal);border-radius:9px;padding:10px 12px;color:#fff}
-  .missed .lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--signal);font-weight:600;font-family:var(--display)}
-  .missed .num{font-size:.92rem;font-weight:600;margin-top:2px}
-  .missed .time{font-size:.7rem;color:#8597b0}
-  .bubble{max-width:86%;padding:9px 12px;border-radius:14px;font-size:.82rem;opacity:0;transform:translateY(10px);animation:rise .5s ease forwards;line-height:1.35}
-  .bubble.out{align-self:flex-end;background:var(--signal);color:#fff;border-bottom-right-radius:5px;animation-delay:.5s}
-  .bubble.in{align-self:flex-start;background:#1d2c44;color:#e8eef6;border-bottom-left-radius:5px;animation-delay:1.5s}
-  @keyframes rise{to{opacity:1;transform:translateY(0)}}
-  @media (prefers-reduced-motion:reduce){.bubble{animation:none;opacity:1;transform:none}}
-
-  /* terminal/scan visual - inside the vulnerability hero column */
-  .term{margin:0 auto;width:100%;max-width:380px;background:#0a1422;border-radius:18px;box-shadow:0 20px 40px -16px rgba(16,28,48,.35);border:1px solid #21344f;overflow:hidden;font-family:'SFMono-Regular','Consolas','Liberation Mono',monospace;font-size:.85rem;display:flex;flex-direction:column}
-  .term-head{background:#152136;padding:11px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid #21344f}
-  .term-head .dot{width:10px;height:10px;border-radius:5px;background:#3a4658}
-  .term-head .dot.r{background:#e06450}
-  .term-head .dot.y{background:#e6b94a}
-  .term-head .dot.g{background:#5cc371}
-  .term-head .ttl{margin-left:8px;color:#8597b0;font-size:.75rem;font-family:var(--display);font-weight:500}
-  .term-body{padding:20px 18px;color:#cad6e8;line-height:1.85;flex-grow:1;min-height:220px}
-  .term-body .ln{display:block;opacity:0;animation:term-line .4s ease forwards}
-  .term-body .ln:nth-child(1){animation-delay:.2s}
-  .term-body .ln:nth-child(2){animation-delay:.7s}
-  .term-body .ln:nth-child(3){animation-delay:1.2s}
-  .term-body .ln:nth-child(4){animation-delay:1.7s}
-  .term-body .ln:nth-child(5){animation-delay:2.1s}
-  .term-body .ln:nth-child(6){animation-delay:2.5s}
-  @keyframes term-line{to{opacity:1}}
-  @media (prefers-reduced-motion:reduce){.term-body .ln{animation:none;opacity:1}}
-  .term .pfx{color:#5fb4d1}
-  .term .ok{color:#5cc371;font-weight:600}
-  .term .crit{color:#e06450;font-weight:600}
-  .term .warn{color:#e6b94a;font-weight:600}
-  .term .dim{color:#6b7888}
-
-  /* sections */
   section{padding:76px 0}
-  .sec-head{max-width:38em;margin-bottom:46px}
+  .sec-head{max-width:40em;margin-bottom:46px}
   .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:700;margin:14px 0 12px}
   .sec-head p{color:var(--slate);font-size:1.08rem}
 
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;transition:border-color .2s ease,transform .2s ease}
+  /* service cards */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px;transition:border-color .2s ease,transform .2s ease;display:flex;flex-direction:column}
   .card:hover{border-color:var(--signal);transform:translateY(-3px)}
-  .card .ic{width:46px;height:46px;border-radius:11px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px}
-  .card h3{font-size:1.22rem;font-weight:600;margin-bottom:10px}
-  .card p{color:var(--slate);font-size:.98rem}
+  .card .ic{width:50px;height:50px;border-radius:12px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+  .card h3{font-size:1.3rem;font-weight:600;margin-bottom:10px}
+  .card p{color:var(--slate);font-size:1rem;margin-bottom:18px;flex-grow:1}
+  .card .more{font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--signal-dark);display:inline-flex;align-items:center;gap:6px}
+  .card .more::after{content:"→";transition:transform .15s ease}
+  .card:hover .more::after{transform:translateX(3px)}
+  .card .soon{display:inline-block;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:8px;vertical-align:middle}
 
-  /* band */
+  /* how it works band */
   .band{background:var(--ink);color:#fff}
-  .band .wrap{display:flex;gap:40px;align-items:center;flex-wrap:wrap;justify-content:space-between}
-  .band h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;max-width:18em;color:#fff}
+  .band .wrap{padding:64px 24px}
+  .band h2{font-size:clamp(1.6rem,3vw,2.1rem);font-weight:600;max-width:20em;color:#fff;margin-bottom:14px}
   .band h2 em{font-style:normal;color:var(--signal)}
+  .band p{color:#b6c2d4;max-width:34em;font-size:1.06rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+  .step .n{font-family:var(--display);font-weight:700;font-size:1rem;color:var(--ink);background:var(--signal);width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{color:#fff;font-size:1.12rem;font-weight:600;margin-bottom:8px}
+  .step p{color:#9fb0c6;font-size:.96rem}
 
   /* about */
   .about{background:var(--paper)}
@@ -139,17 +104,13 @@
   .contact-info .row{margin-bottom:12px}
   .contact-info .k{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:#8597b0;font-family:var(--display);margin-bottom:2px}
 
-  /* footer + privacy */
   footer{border-top:1px solid var(--line);padding:40px 0;font-size:.92rem;color:var(--slate)}
-  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px}
-  .privacy{font-size:.86rem;color:#73808f;max-width:none}
-  .privacy h3{font-family:var(--display);font-size:1rem;color:var(--ink);margin:18px 0 6px}
-  .privacy p{margin-bottom:8px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:12px}
 
   @media (max-width:860px){
-    .hero-split{grid-template-columns:1fr;gap:20px}
-    .about-grid{grid-template-columns:1fr;gap:40px}
     .cards{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr;gap:22px}
+    .about-grid{grid-template-columns:1fr;gap:40px}
     .contact-box{grid-template-columns:1fr;padding:36px}
     .nav-links{display:none}
     .menu-btn{display:block}
@@ -169,141 +130,141 @@
       <div class="has-drop">
         <a href="#services" tabindex="0">Services</a>
         <div class="drop" role="menu">
-          <a href="/pricing/">Lead capture <small>Missed calls, email, Google profile</small></a>
-          <a href="/vulnerability/">Vulnerability assessment <small>Find security gaps before they hurt</small></a>
+          <a href="/seo">SEO <small>Get found in Google search</small></a>
+          <a href="/website-design">Website Design <small>Sites built to win customers</small></a>
+          <a href="/google-profile">Google Profile Management <small>Own your local presence</small></a>
+          <a href="/text-back">AI Text-Back <small>Never lose a missed-call lead</small></a>
         </div>
       </div>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="https://app.sentriqdigital.com/login" class="login-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Client login</a>
-      <a href="#contact" class="btn">Free audit</a>
+      <a href="#contact" class="btn">Get a quote</a>
     </nav>
     <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
   </div>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-split">
-
-    <!-- LEFT: Lead capture -->
-    <div class="hero-col">
-      <div class="tag">Lead capture</div>
-      <h2>The calls you miss are <em>jobs you lose.</em></h2>
-      <p>When you're on a job and can't pick up, that caller dials the next company. We text them back in seconds, keep your Google profile working, and make sure your emails actually land &mdash; so more calls turn into paying work.</p>
-      <div class="actions">
-        <a href="/pricing/" class="btn">See plans</a>
-        <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="ghost">Free 2-minute audit</a>
-      </div>
-      <div class="visual">
-        <div class="phone" aria-hidden="true">
-          <div class="phone-screen">
-            <div class="missed">
-              <div class="lbl">Missed call</div>
-              <div class="num">(281) 555-0147</div>
-              <div class="time">Today, 2:14 PM</div>
-            </div>
-            <div class="bubble out">Hi! Sorry we missed your call. How can we help? Reply here and we'll get right back to you.</div>
-            <div class="bubble in">My AC stopped cooling &mdash; can someone come today?</div>
-          </div>
-        </div>
-      </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Digital growth for service businesses</span>
+    <h1>Get found. <em>Keep leads.</em></h1>
+    <p>Most service businesses lose customers two ways: they're hard to find online, and they miss the calls that do come in. Sentriq fixes both &mdash; we get your business in front of local customers and make sure every lead is captured.</p>
+    <div class="actions">
+      <a href="#contact" class="btn">Get a quote</a>
+      <a href="#services" class="ghost">See what we do</a>
     </div>
-
-    <!-- RIGHT: Vulnerability assessment -->
-    <div class="hero-col">
-      <div class="tag">Vulnerability assessment</div>
-      <h2>Find the gaps <em>before someone else does.</em></h2>
-      <p>A clear, no-jargon security check of your network and the systems your business depends on. We scan, prioritize the real risks, and hand you a plain-English report with what to fix first.</p>
-      <div class="actions">
-        <a href="/vulnerability/" class="btn">Request a quote</a>
-        <a href="/vulnerability/#request" class="ghost">How it works</a>
-      </div>
-      <div class="visual">
-        <div class="term" aria-hidden="true">
-          <div class="term-head">
-            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="ttl">sentriq &mdash; scan results</span>
-          </div>
-          <div class="term-body">
-            <span class="ln"><span class="pfx">$</span> sentriq-scan --target client.local</span>
-            <span class="ln"><span class="dim">[*] Discovering hosts...</span> <span class="ok">9 found</span></span>
-            <span class="ln"><span class="dim">[*] Probing services...</span> <span class="ok">done</span></span>
-            <span class="ln"><span class="crit">[!] CRITICAL</span> <span class="dim">CVE-2024-3094 &middot; router admin exposed</span></span>
-            <span class="ln"><span class="warn">[!] HIGH</span> <span class="dim">Weak TLS on mail gateway</span></span>
-            <span class="ln"><span class="ok">[✓]</span> <span class="dim">Report ready &middot; 12 findings prioritized</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
+<!-- SERVICES -->
 <section id="services">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">What we do</span>
-      <h2>Three ways we keep customers from slipping away</h2>
-      <p>Simple, done-for-you systems that capture the leads you're already paying to get.</p>
+      <h2>Everything you need to grow online &mdash; in one place</h2>
+      <p>From showing up on Google to capturing the leads that come from it, we handle the digital side so you can focus on the work.</p>
     </div>
     <div class="cards">
+
       <div class="card">
-        <div class="ic">📞</div>
-        <h3>Missed-call text-back</h3>
-        <p>Miss a call and an automatic text goes out within seconds — "Sorry we missed you, how can we help?" — so the lead becomes a conversation instead of a call to the next company. Replies route straight to your phone, and every caller is captured so nothing slips through. You keep working; the leads stop leaking.</p>
+        <div class="ic">🔍</div>
+        <h3>SEO</h3>
+        <p>Show up when local customers search for what you do. We optimize your site and local signals so you rank where it counts &mdash; in front of people ready to buy.</p>
+        <a href="/seo" class="more">Learn more</a>
       </div>
+
+      <div class="card">
+        <div class="ic">🎨</div>
+        <h3>Website Design</h3>
+        <p>A fast, clean, mobile-ready site built to turn visitors into customers &mdash; not just look pretty. Designed around how people actually choose a service business.</p>
+        <a href="/website-design" class="more">Learn more</a>
+      </div>
+
       <div class="card">
         <div class="ic">📍</div>
-        <h3>Google profile management</h3>
-        <p>Your Google Business Profile is how nearby customers find you and decide whether to call. We keep it sharp — accurate hours and services, fresh photos and posts, and prompt, professional replies to every review — so you rank higher in local search and look like the obvious choice.</p>
+        <h3>Google Profile Management</h3>
+        <p>Your Google Business Profile is often the first thing customers see. We keep it accurate, active, and optimized &mdash; with reviews managed and posts kept fresh.</p>
+        <a href="/google-profile" class="more">Learn more</a>
       </div>
+
       <div class="card">
-        <div class="ic">✉️</div>
-        <h3>Email that actually lands</h3>
-        <p>We configure your email the right way — SPF, DKIM, and DMARC — so your quotes, invoices, and follow-ups reach the inbox instead of the spam folder, and no one can spoof your business to scam your customers. The technical hygiene most shops are missing, set up once and monitored.</p>
+        <div class="ic">💬</div>
+        <h3>AI Text-Back <span class="soon">Coming soon</span></h3>
+        <p>When you can't pick up, the caller usually dials the next company. Our automated text-back responds in seconds and captures the lead &mdash; so a missed call doesn't mean a lost job.</p>
+        <a href="/text-back" class="more">Learn more</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="band" style="padding:0">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--signal)">How it works</span>
+    <h2>Two jobs, done right: <em>get found, then keep every lead.</em></h2>
+    <p>We start by making your business easy to find, then make sure none of the interest you earn slips through the cracks.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Get found</h3>
+        <p>Website, SEO, and Google Profile work together to put you in front of local customers searching for your service.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Capture the lead</h3>
+        <p>Forms, calls, and (soon) automated text-back make sure every interested customer gets captured &mdash; not lost.</p>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>See the results</h3>
+        <p>Your client portal shows how you're being found and the leads coming in &mdash; so you see exactly what you're paying for.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap">
-    <h2>A missed call rarely calls back. They call <em>the next company.</em></h2>
-    <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="btn">Stop the leak</a>
-  </div>
-</section>
-
-<section id="about" class="about">
+<!-- ABOUT -->
+<section class="about" id="about">
   <div class="wrap about-grid">
     <div>
-      <span class="eyebrow">Who you're working with</span>
-      <h2 style="font-size:2rem;font-weight:700;margin:14px 0 18px">Local, technical, and built for trades.</h2>
-      <p>Sentriq is a Texas-based technology service run by me, Aaron Parks. I build the same lead-capture systems big companies rely on — and set them up for local service businesses that don't have time to wrestle with software.</p>
-      <p>I hold a bachelor's in computer science from Texas State University and a master's in computer science with a focus in cybersecurity from Oklahoma Christian University. Before going out on my own, I spent three years building and securing systems for the Department of Defense and enterprise companies — so the work I set up for you is held to the same standard.</p>
-      <p>No long contracts, no jargon. You keep doing the work; I make sure the phone, the inbox, and your Google listing are all pulling their weight.</p>
+      <span class="eyebrow">About Sentriq</span>
+      <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:700;margin:14px 0 18px">Built by people who understand the tech &mdash; for businesses that just want results.</h2>
+      <p>Sentriq Digital helps Texas service businesses grow online without the headache. We combine hands-on technical know-how with real marketing and design &mdash; so you get a partner who can actually build and run the systems, not just talk about them.</p>
+      <p>We keep it straightforward: get you found, capture your leads, and show you the results in plain language.</p>
     </div>
-    <ul class="creds">
-      <li><span class="chk">✓</span> B.S. Computer Science — Texas State University</li>
-      <li><span class="chk">✓</span> M.S. Computer Science, Cybersecurity focus — Oklahoma Christian University</li>
-      <li><span class="chk">✓</span> 3 years in security &amp; software development (DoD + enterprise)</li>
-      <li><span class="chk">✓</span> Security+ and ISC2 CC certified</li>
-      <li><span class="chk">✓</span> Texas-based — month-to-month, no long contracts</li>
-    </ul>
+    <div>
+      <ul class="creds">
+        <li><span class="chk">✓</span> Website design &amp; development</li>
+        <li><span class="chk">✓</span> Local SEO &amp; Google search visibility</li>
+        <li><span class="chk">✓</span> Google Business Profile management</li>
+        <li><span class="chk">✓</span> Lead capture &amp; automated follow-up</li>
+        <li><span class="chk">✓</span> A live client portal to track it all</li>
+        <li><span class="chk">✓</span> Texas-based, service-business focused</li>
+      </ul>
+    </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <div class="contact-box">
       <div>
-        <h2>See what you're missing — free.</h2>
-        <p>I'll check your phone follow-up, your Google profile, and your email setup, then show you exactly where leads are leaking. Takes two minutes, no obligation.</p>
-        <a href="mailto:hello@sentriqdigital.com?subject=Free%20audit%20request&body=Hi%20Aaron%2C%20I%27d%20like%20a%20free%20audit%20of%20my%20business.%20My%20company%20name%20and%20website%3A%20" class="btn" style="margin-top:18px">Request my free audit</a>
+        <h2>Let's grow your business.</h2>
+        <p>Tell us about your business and what you're trying to grow. We'll put together a plan and a quote &mdash; no pressure, no jargon.</p>
       </div>
       <div class="contact-info">
-        <div class="row"><span class="k">Email</span><a href="mailto:hello@sentriqdigital.com">hello@sentriqdigital.com</a></div>
-        <div class="row"><span class="k">Phone</span><a href="tel:+13468183337">(346) 818-3337</a></div>
-        <div class="row"><span class="k">Area</span>Texas &amp; surrounding areas</div>
+        <div class="row">
+          <span class="k">Email</span>
+          <a href="mailto:hello@sentriqdigital.com?subject=Quote%20request">hello@sentriqdigital.com</a>
+        </div>
+        <div class="row">
+          <span class="k">Get started</span>
+          <a href="mailto:hello@sentriqdigital.com?subject=Quote%20request&body=Hi%20Sentriq%2C%20here%27s%20my%20business%20and%20what%20I%27m%20looking%20to%20grow%3A%20">Request a quote →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -313,24 +274,10 @@
   <div class="wrap">
     <div class="foot-top">
       <div class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></div>
-      <div>© 2026 Sentriq. All rights reserved.</div>
-    </div>
-    <div class="privacy" id="privacy">
-      <h3>Privacy Policy</h3>
-      <p>Sentriq ("we") respects your privacy. This page explains what we collect and how we use it.</p>
-      <p><strong>What we collect:</strong> contact details you provide (name, phone, email) and basic information about your business when you request an audit or become a client.</p>
-      <p><strong>How we use it:</strong> only to provide and improve our services and to communicate with you about them. We do not sell, rent, or share your personal information with third parties for their marketing.</p>
-      <p><strong>Text messaging:</strong> if you contact us or use a service we manage, you may receive SMS messages related to that service. Message and data rates may apply. You can opt out at any time by replying STOP, or reply HELP for help. Mobile information is never shared with third parties for marketing purposes.</p>
-      <p><strong>Contact:</strong> questions about this policy? Email hello@sentriqdigital.com.</p>
+      <div>© 2026 Sentriq Digital · Texas</div>
     </div>
   </div>
 </footer>
 
-<script>
-  // close mobile menu on link tap
-  document.querySelectorAll('#nav a').forEach(function(a){
-    a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open')});
-  });
-</script>
 </body>
 </html>

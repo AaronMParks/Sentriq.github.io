@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Google Profile Management — Own Your Local Presence | Sentriq Digital</title>
+<meta name="description" content="Google Business Profile management for service businesses — keep your listing accurate, active, and optimized, with reviews managed and posts kept fresh so you stand out in local search and maps." />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16263F; --navy-deep:#0F1C30; --paper:#F5F7FA; --white:#FFFFFF;
+    --signal:#F2864B; --signal-dark:#D96B2C; --success:#2FA66A;
+    --slate:#4A5568; --line:#E3E7EC;
+    --display:'Space Grotesk',sans-serif; --body:'IBM Plex Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
+  .brand .nm{font-weight:700;font-size:1.34rem;letter-spacing:-0.02em}
+  .brand .sub{font-size:.6rem;letter-spacing:.36em;text-transform:uppercase;color:var(--signal);align-self:flex-end;margin-top:3px;font-weight:600}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.95rem;color:var(--slate);font-weight:500}
+  .nav-links a:hover{color:var(--ink)}
+  .login-link{display:inline-flex;align-items:center;gap:6px;font-size:.9rem;color:var(--slate);font-weight:500;padding-left:18px;margin-left:2px;border-left:1px solid var(--line)}
+  .login-link:hover{color:var(--signal-dark)}
+  .login-link svg{width:15px;height:15px;opacity:.85}
+
+  .has-drop{position:relative}
+  .has-drop > a{cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+  .has-drop > a.current{color:var(--ink);font-weight:600}
+  .has-drop > a::after{content:"▾";font-size:.7rem;color:var(--slate);transition:transform .15s ease}
+  .has-drop:hover > a::after,.has-drop:focus-within > a::after{transform:rotate(180deg);color:var(--ink)}
+  .drop{position:absolute;top:calc(100% + 6px);left:-12px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 28px -10px rgba(16,28,48,.18);padding:8px;min-width:280px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:all .15s ease;z-index:60}
+  .has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop a{display:block;padding:10px 14px;border-radius:8px;font-size:.95rem;color:var(--ink);font-weight:500}
+  .drop a:hover{background:var(--paper);color:var(--signal-dark)}
+  .drop a.current{background:var(--paper);color:var(--signal-dark)}
+  .drop a small{display:block;color:var(--slate);font-weight:400;font-size:.82rem;margin-top:2px;line-height:1.35}
+  .btn{font-family:var(--display);font-weight:600;background:var(--signal);color:#fff;padding:11px 20px;border-radius:8px;font-size:.95rem;display:inline-block;transition:transform .15s ease,background .15s ease}
+  .btn:hover{background:var(--signal-dark);transform:translateY(-1px)}
+  .nav .btn{padding:9px 18px}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+  /* service hero */
+  .s-hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 72%);padding:72px 0 60px;border-bottom:1px solid var(--line)}
+  .s-hero .inner{max-width:42em}
+  .s-hero .ic{width:60px;height:60px;border-radius:14px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px}
+  .s-hero h1{font-size:clamp(2.1rem,4.6vw,3.1rem);font-weight:700;line-height:1.06;margin-bottom:18px}
+  .s-hero h1 em{font-style:normal;color:var(--signal)}
+  .s-hero p{color:var(--slate);font-size:1.16rem;max-width:32em;margin-bottom:28px}
+  .s-hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
+  .soon-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
+
+  section{padding:72px 0}
+  .sec-head{max-width:40em;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;margin:12px 0 12px}
+  .sec-head p{color:var(--slate);font-size:1.06rem}
+
+  /* feature rows */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
+  .feat .fi{width:44px;height:44px;border-radius:11px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+  .feat h3{font-size:1.16rem;font-weight:600;margin-bottom:8px}
+  .feat p{color:var(--slate);font-size:.97rem}
+
+  /* benefit list block */
+  .benefits{background:var(--paper)}
+  .benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+  .benefit-grid p{color:var(--slate);font-size:1.05rem;margin-bottom:16px}
+  .blist{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .blist li{display:flex;gap:11px;align-items:flex-start;font-weight:500}
+  .blist .chk{color:var(--success);font-weight:700;flex-shrink:0}
+
+  /* cta band */
+  .cta{background:var(--ink);color:#fff;text-align:center}
+  .cta h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;margin-bottom:14px;max-width:20em;margin-left:auto;margin-right:auto}
+  .cta h2 em{font-style:normal;color:var(--signal)}
+  .cta p{color:#b6c2d4;font-size:1.08rem;max-width:30em;margin:0 auto 26px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;font-size:.92rem;color:var(--slate)}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+  @media (max-width:860px){
+    .features{grid-template-columns:1fr}
+    .benefit-grid{grid-template-columns:1fr;gap:36px}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    .nav-links.open .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0;background:transparent}
+    .has-drop > a::after{display:none}
+  }
+  :focus-visible{outline:3px solid var(--signal);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></a>
+    <nav class="nav-links" id="nav">
+      <div class="has-drop">
+        <a href="#" class="current" tabindex="0">Services</a>
+        <div class="drop" role="menu">
+          <!-- mark the current service with class="current" -->
+          <a href="/seo">SEO <small>Get found in Google search</small></a>
+          <a href="/website-design">Website Design <small>Sites built to win customers</small></a>
+          <a href="/google-profile" class="current">Google Profile Management <small>Own your local presence</small></a>
+          <a href="/text-back">AI Text-Back <small>Never lose a missed-call lead</small></a>
+        </div>
+      </div>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <a href="https://app.sentriqdigital.com/login" class="login-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Client login</a>
+      <a href="/#contact" class="btn">Get a quote</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- SERVICE HERO -->
+<section class="s-hero">
+  <div class="wrap inner">
+    <!-- include .soon-badge only for not-yet-live services like text-back -->
+    <div class="ic">📍</div>
+    <h1>Own your spot on <em>Google Maps.</em></h1>
+    <p>For most local searches, your Google Business Profile is the very first thing a customer sees &mdash; before they ever reach your website. We keep it accurate, active, and optimized so you stand out in search and maps and earn the click.</p>
+    <div class="actions">
+      <a href="/#contact" class="btn">Get a quote</a>
+      <a href="/#services" class="ghost">See all services</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What's included</span>
+      <h2>Your listing, managed and kept sharp</h2>
+      <p>An out-of-date or neglected profile quietly sends customers to your competitors. We make sure yours is doing the opposite.</p>
+    </div>
+    <div class="features">
+      <div class="feat"><div class="fi">✅</div><h3>Accurate &amp; optimized</h3><p>Hours, services, photos, and details kept correct and complete &mdash; the things Google rewards and customers check first.</p></div>
+      <div class="feat"><div class="fi">⭐</div><h3>Review management</h3><p>We help you stay on top of reviews and respond professionally &mdash; because how you handle reviews is part of how customers judge you.</p></div>
+      <div class="feat"><div class="fi">📣</div><h3>Fresh &amp; active</h3><p>Regular posts and updates signal to Google &mdash; and to customers &mdash; that you're active and open for business.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT MATTERS -->
+<section class="benefits">
+  <div class="wrap benefit-grid">
+    <div>
+      <span class="eyebrow">Why it matters</span>
+      <h2 style="font-size:clamp(1.7rem,3.2vw,2.3rem);font-weight:700;margin:12px 0 18px">Your profile is your first impression.</h2>
+      <p>When someone searches for your service nearby, Google shows them a short list of businesses with ratings, photos, and details &mdash; and most people pick from that list without scrolling further. A strong, active profile is what gets you on it.</p>
+      <p>We make sure your profile works as a 24/7 storefront that earns trust and drives calls, clicks, and directions to your door.</p>
+    </div>
+    <div>
+      <ul class="blist">
+        <li><span class="chk">✓</span> Stand out in Google Maps &amp; local search</li>
+        <li><span class="chk">✓</span> Keep hours, services &amp; info always correct</li>
+        <li><span class="chk">✓</span> Stay on top of customer reviews</li>
+        <li><span class="chk">✓</span> Look active and trustworthy to new customers</li>
+        <li><span class="chk">✓</span> See your search &amp; visitor stats in your portal</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>Let's make your profile <em>work for you.</em></h2>
+    <p>Tell us about your business and we'll take a look at your current Google presence &mdash; then put together a plan and a quote.</p>
+    <a href="/#contact" class="btn">Get a quote</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="/" class="brand"><span class="nm">Sentriq</span><span class="sub">digital</span></a>
+      <div>© 2026 Sentriq Digital · Texas</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
