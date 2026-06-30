@@ -24,7 +24,15 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
 
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease}
+  header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  /* over the dark hero: white nav text */
+  header:not(.scrolled) .brand .nm{color:#fff}
+  header:not(.scrolled) .nav-links > a,header:not(.scrolled) .has-drop > a{color:rgba(255,255,255,.85)}
+  header:not(.scrolled) .nav-links > a:hover,header:not(.scrolled) .has-drop > a:hover{color:#fff}
+  header:not(.scrolled) .has-drop > a::after{color:rgba(255,255,255,.7)}
+  header:not(.scrolled) .login-link{color:rgba(255,255,255,.85);border-left-color:rgba(255,255,255,.25)}
+  header:not(.scrolled) .login-link:hover{color:#fff}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
   .brand .nm{font-weight:700;font-size:1.34rem;letter-spacing:-0.02em}
@@ -50,14 +58,59 @@
   .nav .btn{padding:9px 18px}
   .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 
-  /* hero */
-  .hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 72%);padding:84px 0 72px;border-bottom:1px solid var(--line)}
-  .hero-inner{max-width:50em}
-  .hero h1{font-size:clamp(2.3rem,5.2vw,3.6rem);font-weight:700;line-height:1.05;margin:16px 0 20px}
-  .hero h1 em{font-style:normal;color:var(--signal)}
-  .hero p{color:var(--slate);font-size:1.18rem;max-width:34em;margin-bottom:30px}
-  .hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-  .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
+  /* ===== ANIMATED DARK HERO ===== */
+  .hero{position:relative;min-height:90vh;display:flex;align-items:center;overflow:hidden;background:#0B1626;isolation:isolate;margin-top:-68px;padding-top:68px}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-3;background:linear-gradient(125deg,#0B1626 0%,#122236 50%,#16263F 100%)}
+  .glow{position:absolute;border-radius:50%;filter:blur(64px);z-index:-2;opacity:0;animation-fill-mode:forwards}
+  .glow.a{width:520px;height:520px;background:radial-gradient(circle,rgba(242,134,75,.45),transparent 68%);top:-40px;right:4%;animation:gin 2.2s ease-out .2s forwards,drA 20s ease-in-out 2.4s infinite alternate}
+  .glow.b{width:380px;height:380px;background:radial-gradient(circle,rgba(242,134,75,.22),transparent 66%);bottom:-40px;right:24%;animation:gin 2.6s ease-out .5s forwards,drB 24s ease-in-out 3s infinite alternate}
+  .glow.c{width:300px;height:300px;background:radial-gradient(circle,rgba(70,130,200,.28),transparent 70%);top:46%;right:10%;animation:gin 3s ease-out .7s forwards,drC 26s ease-in-out 3.5s infinite alternate}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 30% 50%,transparent 50%,rgba(6,12,22,.5) 100%);pointer-events:none}
+  @keyframes gin{from{opacity:0;transform:scale(1.25)}to{opacity:1;transform:scale(1)}}
+  @keyframes drA{to{transform:translate(-36px,28px)}}
+  @keyframes drB{to{transform:translate(44px,-26px)}}
+  @keyframes drC{to{transform:translate(-28px,-22px)}}
+
+  .hero-grid{position:relative;z-index:4;max-width:1180px;margin:0 auto;padding:0 24px;width:100%;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .hero .heyebrow{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);margin-bottom:20px;opacity:0;animation:slideIn .7s ease-out .3s forwards;display:block}
+  .hero h1{font-family:var(--display);font-weight:700;color:#fff;font-size:clamp(2.7rem,5.4vw,4.4rem);line-height:1.02;letter-spacing:-0.025em;margin-bottom:24px}
+  .hero h1 .line{display:block;opacity:0;transform:translateX(-40px);animation:slideIn .85s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero h1 .line.l1{animation-delay:.5s}
+  .hero h1 .line.l2{animation-delay:.72s;color:var(--signal)}
+  .hero .sub-copy{font-size:1.18rem;color:rgba(255,255,255,.82);max-width:32rem;line-height:1.6;margin-bottom:32px;opacity:0;animation:slideIn .85s ease-out .95s forwards}
+  .hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;opacity:0;animation:slideIn .85s ease-out 1.12s forwards}
+  .hero .btn{padding:13px 24px;font-size:1rem;border-radius:9px}
+  .ghost{font-family:var(--display);font-weight:600;font-size:1rem;color:#fff;padding:13px 4px;border-bottom:2px solid var(--signal)}
+  @keyframes slideIn{to{opacity:1;transform:translateX(0)}}
+
+  .visual{position:relative;height:420px;opacity:0;animation:fadeUp 1s ease-out 1.1s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .v-card{position:absolute;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;backdrop-filter:blur(8px);box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+  .v-main{top:40px;left:0;width:280px;padding:18px}
+  .v-main .vrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .v-pin{width:34px;height:34px;border-radius:9px;background:var(--signal);display:flex;align-items:center;justify-content:center;font-size:18px}
+  .v-main .t{color:#fff;font-family:var(--display);font-weight:600;font-size:.95rem}
+  .v-main .s{color:rgba(255,255,255,.55);font-size:.78rem}
+  .v-bar{height:7px;border-radius:6px;background:rgba(255,255,255,.12);margin-bottom:7px}
+  .v-bar.f{width:85%;background:linear-gradient(90deg,var(--signal),var(--signal-dark))}
+  .v-bar.g{width:60%}
+  .v-bar.h{width:72%}
+  .v-lead{top:0;right:0;width:210px;padding:13px 15px;display:flex;gap:10px;align-items:center;animation:floaty 5s ease-in-out 2s infinite alternate}
+  .v-lead .ic{width:30px;height:30px;border-radius:8px;background:#2FA66A;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+  .v-lead .lt{color:#fff;font-size:.82rem;font-weight:600;font-family:var(--display)}
+  .v-lead .ls{color:rgba(255,255,255,.55);font-size:.72rem}
+  .v-rev{bottom:20px;right:30px;width:190px;padding:13px 15px;animation:floaty 6s ease-in-out 2.4s infinite alternate-reverse}
+  .v-rev .stars{color:var(--signal);font-size:1rem;letter-spacing:2px}
+  .v-rev .rt{color:#fff;font-size:.8rem;margin-top:5px;font-family:var(--display);font-weight:600}
+  .v-rev .rs{color:rgba(255,255,255,.5);font-size:.72rem}
+  .rings{position:absolute;top:78px;left:28px;width:10px;height:10px}
+  .ring{position:absolute;border:2px solid var(--signal);border-radius:50%;opacity:0;animation:pulse 3.5s ease-out infinite}
+  .ring:nth-child(2){animation-delay:1.2s}
+  .ring:nth-child(3){animation-delay:2.4s}
+  @keyframes pulse{0%{width:10px;height:10px;top:0;left:0;opacity:.7}100%{width:200px;height:200px;top:-95px;left:-95px;opacity:0}}
+  @keyframes floaty{to{transform:translateY(-12px)}}
+  @media (max-width:880px){.hero-grid{grid-template-columns:1fr}.visual{display:none}}
+  @media (prefers-reduced-motion:reduce){.glow,.heyebrow,.hero h1 .line,.sub-copy,.hero .actions,.visual,.v-lead,.v-rev,.ring{animation:none !important;opacity:1 !important;transform:none !important}.glow.a{opacity:1}.glow.b{opacity:.85}.glow.c{opacity:.7}}
 
   section{padding:76px 0}
   .sec-head{max-width:40em;margin-bottom:46px}
@@ -148,13 +201,38 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-inner">
-    <span class="eyebrow">Digital growth for service businesses</span>
-    <h1>Get found. <em>Keep leads.</em></h1>
-    <p>Most service businesses lose customers two ways: they're hard to find online, and they miss the calls that do come in. Sentriq fixes both &mdash; we get your business in front of local customers and make sure every lead is captured.</p>
-    <div class="actions">
-      <a href="#contact" class="btn">Get a quote</a>
-      <a href="#services" class="ghost">See what we do</a>
+  <span class="glow a"></span><span class="glow b"></span><span class="glow c"></span>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <span class="heyebrow">Digital growth for service businesses</span>
+      <h1>
+        <span class="line l1">Get found.</span>
+        <span class="line l2">Keep leads.</span>
+      </h1>
+      <p class="sub-copy">Most service businesses lose customers two ways: they're hard to find online, and they miss the calls that come in. Sentriq fixes both.</p>
+      <div class="actions">
+        <a href="#contact" class="btn">Get a quote</a>
+        <a href="#services" class="ghost">See what we do</a>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="rings"><span class="ring"></span><span class="ring"></span><span class="ring"></span></div>
+      <div class="v-card v-main">
+        <div class="vrow">
+          <div class="v-pin">📍</div>
+          <div><div class="t">Your HVAC Co.</div><div class="s">Top result &middot; Sugar Land, TX</div></div>
+        </div>
+        <div class="v-bar f"></div><div class="v-bar g"></div><div class="v-bar h"></div>
+      </div>
+      <div class="v-card v-lead">
+        <div class="ic">💬</div>
+        <div><div class="lt">New lead captured</div><div class="ls">Missed call &rarr; texted back</div></div>
+      </div>
+      <div class="v-card v-rev">
+        <div class="stars">★★★★★</div>
+        <div class="rt">4.9 rating</div>
+        <div class="rs">128 Google reviews</div>
+      </div>
     </div>
   </div>
 </section>
@@ -288,5 +366,13 @@
   </div>
 </footer>
 
+<script>
+  // header turns solid after scrolling past the hero top
+  (function(){
+    var h=document.querySelector('header');
+    function onScroll(){ if(window.scrollY>40){h.classList.add('scrolled');}else{h.classList.remove('scrolled');} }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  })();
+</script>
 </body>
 </html>
