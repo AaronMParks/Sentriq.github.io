@@ -33,6 +33,7 @@
   header:not(.scrolled) .has-drop > a::after{color:rgba(255,255,255,.7)}
   header:not(.scrolled) .login-link{color:rgba(255,255,255,.85);border-left-color:rgba(255,255,255,.25)}
   header:not(.scrolled) .login-link:hover{color:#fff}
+  header:not(.scrolled) .menu-btn{color:#fff}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
   .brand .nm{font-weight:700;font-size:1.34rem;letter-spacing:-0.02em}
@@ -168,6 +169,12 @@
     .nav-links{display:none}
     .menu-btn{display:block}
     .nav-links.open{display:flex;position:absolute;top:68px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:18px;border-bottom:1px solid var(--line)}
+    /* mobile open menu: white bg, so force dark text regardless of scroll state */
+    header:not(.scrolled) .nav-links.open > a,
+    header:not(.scrolled) .nav-links.open .has-drop > a{color:var(--ink)}
+    header:not(.scrolled) .nav-links.open .has-drop > a::after{color:var(--slate)}
+    header:not(.scrolled) .nav-links.open .login-link{color:var(--slate);border-left:none}
+    .nav-links.open .drop a{color:var(--ink)}
     .nav-links.open .drop{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0;background:transparent}
     .has-drop > a::after{display:none}
   }
