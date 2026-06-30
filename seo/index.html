@@ -60,6 +60,36 @@
   .s-hero h1 em{font-style:normal;color:var(--signal)}
   .s-hero p{color:var(--slate);font-size:1.16rem;max-width:32em;margin-bottom:28px}
   .s-hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .s-hero .hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  .s-hero .hero-cols .inner{max-width:none;margin:0;padding:0}
+  .s-hero .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;padding:10px 18px}
+  @media (max-width:880px){ .s-hero .hero-cols{grid-template-columns:1fr;gap:36px} .s-hero .hero-visual{order:2} }
+
+  /* ===== SEO search-results mockup ===== */
+  .serp{position:relative;width:330px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 26px 60px -24px rgba(16,28,48,.35);overflow:hidden}
+  .serp::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 10%,rgba(242,134,75,.12),transparent 60%);pointer-events:none}
+  .serp-bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--line)}
+  .serp-search{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:7px 14px;font-size:.78rem;color:var(--slate);display:flex;align-items:center;gap:7px}
+  .serp-search .mag{color:var(--signal-dark)}
+  .serp-list{padding:10px 12px}
+  .res{padding:11px 12px;border-radius:11px;margin-bottom:7px;border:1px solid transparent}
+  .res .nm{font-family:var(--display);font-weight:600;font-size:.86rem;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .res .meta{font-size:.7rem;color:var(--slate);margin-top:3px;display:flex;align-items:center;gap:6px}
+  .res .stars{color:var(--signal)}
+  .res.top{background:#FFF7F1;border-color:#F6C9A8;position:relative}
+  .res.top .badge{position:absolute;top:11px;right:11px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.6rem;letter-spacing:.04em;padding:3px 8px;border-radius:20px}
+  .res.dim{opacity:.55}
+  .res.dim .nm{color:var(--slate)}
+  /* rank-rise chip */
+  .rise{position:absolute;z-index:2;bottom:-12px;right:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-shadow:0 16px 40px -16px rgba(16,28,48,.4);display:flex;align-items:center;gap:9px;animation:floaty 5s ease-in-out 1.5s infinite alternate}
+  .rise .arrow{width:30px;height:30px;border-radius:8px;background:#DCFCE7;color:#166534;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .rise .rt{font-family:var(--display);font-weight:700;font-size:.84rem;color:var(--ink)}
+  .rise .rs{font-size:.66rem;color:var(--slate)}
+  @keyframes floaty{to{transform:translateY(-10px)}}
+  .serp,.rise{opacity:0;transform:translateY(14px);animation:popin .7s ease-out forwards}
+  .serp{animation-delay:.3s}.rise{animation-delay:.9s,1.5s}
+  @keyframes popin{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.serp,.rise{animation:none !important;opacity:1 !important;transform:none !important}}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
   .soon-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
 
@@ -132,14 +162,41 @@
 
 <!-- SERVICE HERO -->
 <section class="s-hero">
-  <div class="wrap inner">
-    <!-- include .soon-badge only for not-yet-live services like text-back -->
-    <div class="ic">🔍</div>
-    <h1>Be the business they find <em>first.</em></h1>
-    <p>When someone searches for your service in your area, you want to be at the top &mdash; not buried on page two. We optimize your website and local search presence so the right customers find you before they find your competitors.</p>
-    <div class="actions">
-      <a href="/#contact" class="btn">Get a quote</a>
-      <a href="/#services" class="ghost">See all services</a>
+  <div class="hero-cols">
+    <div class="inner">
+      <div class="ic">🔍</div>
+      <h1>Be the business they find <em>first.</em></h1>
+      <p>When someone searches for your service in your area, you want to be at the top &mdash; not buried on page two. We optimize your website and local search presence so the right customers find you before they find your competitors.</p>
+      <div class="actions">
+        <a href="/#contact" class="btn">Get a quote</a>
+        <a href="/#services" class="ghost">See all services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="serp">
+        <div class="serp-bar">
+          <div class="serp-search"><span class="mag">🔍</span> ac repair near me</div>
+        </div>
+        <div class="serp-list">
+          <div class="res top">
+            <span class="badge">YOU</span>
+            <div class="nm">📍 Your HVAC Co.</div>
+            <div class="meta"><span class="stars">★★★★★</span> 4.9 (128) &middot; Open now &middot; Sugar Land</div>
+          </div>
+          <div class="res dim">
+            <div class="nm">Competitor Heating &amp; Air</div>
+            <div class="meta">★★★★☆ 4.1 (54) &middot; Closed</div>
+          </div>
+          <div class="res dim">
+            <div class="nm">Another AC Company</div>
+            <div class="meta">★★★★☆ 3.9 (31) &middot; Closed</div>
+          </div>
+        </div>
+        <div class="rise">
+          <div class="arrow">▲</div>
+          <div><div class="rt">#1 ranked</div><div class="rs">up from #6 last month</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

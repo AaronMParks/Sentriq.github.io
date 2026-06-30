@@ -60,6 +60,37 @@
   .s-hero h1 em{font-style:normal;color:var(--signal)}
   .s-hero p{color:var(--slate);font-size:1.16rem;max-width:32em;margin-bottom:28px}
   .s-hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .s-hero .hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  .s-hero .hero-cols .inner{max-width:none;margin:0;padding:0}
+  .s-hero .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;padding:10px 18px}
+  @media (max-width:880px){ .s-hero .hero-cols{grid-template-columns:1fr;gap:36px} .s-hero .hero-visual{order:2} }
+
+  /* ===== Google Business Profile card mockup ===== */
+  .gbp{position:relative;width:320px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 26px 60px -24px rgba(16,28,48,.35);overflow:hidden}
+  .gbp-photo{height:120px;background:linear-gradient(135deg,#16263F,#1E3A5F);position:relative;display:flex;align-items:flex-end;padding:12px}
+  .gbp-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 20%,rgba(242,134,75,.35),transparent 60%)}
+  .gbp-photo .openchip{position:relative;z-index:1;background:rgba(255,255,255,.92);color:#166534;font-weight:600;font-size:.68rem;padding:4px 10px;border-radius:20px}
+  .gbp-body{padding:16px 18px}
+  .gbp-name{font-family:var(--display);font-weight:700;font-size:1.15rem;color:var(--ink)}
+  .gbp-cat{font-size:.78rem;color:var(--slate);margin-top:1px}
+  .gbp-rating{display:flex;align-items:center;gap:7px;margin:9px 0}
+  .gbp-rating .num{font-family:var(--display);font-weight:700;color:var(--ink);font-size:.9rem}
+  .gbp-rating .stars{color:var(--signal);letter-spacing:1px;font-size:.86rem}
+  .gbp-rating .cnt{font-size:.74rem;color:var(--slate)}
+  .gbp-info{font-size:.76rem;color:var(--slate);line-height:1.7;border-top:1px solid var(--line);padding-top:11px;margin-top:4px}
+  .gbp-info b{color:var(--ink);font-weight:600}
+  .gbp-actions{display:flex;gap:8px;margin-top:14px}
+  .gbp-btn{flex:1;text-align:center;font-family:var(--display);font-weight:600;font-size:.74rem;padding:9px 0;border-radius:9px;border:1px solid var(--line);color:var(--ink)}
+  .gbp-btn.p{background:var(--signal);color:#fff;border-color:var(--signal)}
+  /* floating "managed" chip */
+  .gbp-mng{position:absolute;z-index:2;top:-12px;right:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 13px;box-shadow:0 16px 40px -16px rgba(16,28,48,.4);display:flex;align-items:center;gap:8px;animation:floaty 5s ease-in-out 1.5s infinite alternate}
+  .gbp-mng .dot{width:9px;height:9px;border-radius:50%;background:#2FA66A;box-shadow:0 0 0 4px rgba(47,166,106,.15)}
+  .gbp-mng .mt{font-family:var(--display);font-weight:600;font-size:.74rem;color:var(--ink)}
+  @keyframes floaty{to{transform:translateY(-10px)}}
+  .gbp,.gbp-mng{opacity:0;transform:translateY(14px);animation:popin .7s ease-out forwards}
+  .gbp{animation-delay:.3s}.gbp-mng{animation-delay:.9s,1.5s}
+  @keyframes popin{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.gbp,.gbp-mng{animation:none !important;opacity:1 !important;transform:none !important}}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
   .soon-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
 
@@ -132,14 +163,40 @@
 
 <!-- SERVICE HERO -->
 <section class="s-hero">
-  <div class="wrap inner">
-    <!-- include .soon-badge only for not-yet-live services like text-back -->
-    <div class="ic">📍</div>
-    <h1>Own your spot on <em>Google Maps.</em></h1>
-    <p>For most local searches, your Google Business Profile is the very first thing a customer sees &mdash; before they ever reach your website. We keep it accurate, active, and optimized so you stand out in search and maps and earn the click.</p>
-    <div class="actions">
-      <a href="/#contact" class="btn">Get a quote</a>
-      <a href="/#services" class="ghost">See all services</a>
+  <div class="hero-cols">
+    <div class="inner">
+      <div class="ic">📍</div>
+      <h1>Own your spot on <em>Google Maps.</em></h1>
+      <p>For most local searches, your Google Business Profile is the very first thing a customer sees &mdash; before they ever reach your website. We keep it accurate, active, and optimized so you stand out in search and maps and earn the click.</p>
+      <div class="actions">
+        <a href="/#contact" class="btn">Get a quote</a>
+        <a href="/#services" class="ghost">See all services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="gbp">
+        <div class="gbp-photo"><span class="openchip">● Open now</span></div>
+        <div class="gbp-body">
+          <div class="gbp-name">Your HVAC Co.</div>
+          <div class="gbp-cat">HVAC contractor &middot; Sugar Land, TX</div>
+          <div class="gbp-rating">
+            <span class="num">4.9</span>
+            <span class="stars">★★★★★</span>
+            <span class="cnt">128 reviews</span>
+          </div>
+          <div class="gbp-info">
+            <b>Hours:</b> Open &middot; Closes 6 PM<br>
+            <b>Phone:</b> (281) 555-0142<br>
+            <b>Services:</b> AC repair, install, maintenance
+          </div>
+          <div class="gbp-actions">
+            <div class="gbp-btn p">Call</div>
+            <div class="gbp-btn">Directions</div>
+            <div class="gbp-btn">Website</div>
+          </div>
+        </div>
+        <div class="gbp-mng"><span class="dot"></span><span class="mt">Managed by Sentriq</span></div>
+      </div>
     </div>
   </div>
 </section>

@@ -60,6 +60,38 @@
   .s-hero h1 em{font-style:normal;color:var(--signal)}
   .s-hero p{color:var(--slate);font-size:1.16rem;max-width:32em;margin-bottom:28px}
   .s-hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .s-hero .hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  .s-hero .hero-cols .inner{max-width:none;margin:0;padding:0}
+  .s-hero .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;padding:10px 18px}
+  @media (max-width:880px){ .s-hero .hero-cols{grid-template-columns:1fr;gap:36px} .s-hero .hero-visual{order:2} }
+
+  /* ===== inbox mockup ===== */
+  .inbox{position:relative;width:340px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 26px 60px -24px rgba(16,28,48,.35);overflow:hidden}
+  .inbox-bar{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line)}
+  .inbox-bar .it{font-family:var(--display);font-weight:700;font-size:.92rem;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .inbox-bar .ic-in{width:22px;height:22px;border-radius:6px;background:var(--signal);display:flex;align-items:center;justify-content:center;font-size:12px}
+  .inbox-bar .ct{font-size:.68rem;color:var(--slate)}
+  .mail{display:flex;gap:11px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .mail .ava{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.8rem;color:#fff}
+  .mail .mbody{flex:1;min-width:0}
+  .mail .mtop{display:flex;justify-content:space-between;align-items:baseline}
+  .mail .mfrom{font-family:var(--display);font-weight:600;font-size:.8rem;color:var(--ink)}
+  .mail .mtime{font-size:.66rem;color:var(--slate)}
+  .mail .msub{font-size:.76rem;color:var(--ink);margin-top:2px;font-weight:500}
+  .mail .mprev{font-size:.72rem;color:var(--slate);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mail.unread{background:#FFFBF7}
+  .mail.unread .mfrom::before{content:"●";color:var(--signal);font-size:.6rem;margin-right:5px;vertical-align:middle}
+  .tag-inbox{display:inline-block;background:#DCFCE7;color:#166534;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:12px;margin-top:5px}
+  /* floating "delivered, not spam" chip */
+  .deliv{position:absolute;z-index:2;bottom:-12px;right:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 13px;box-shadow:0 16px 40px -16px rgba(16,28,48,.4);display:flex;align-items:center;gap:9px;animation:floaty 5s ease-in-out 1.5s infinite alternate}
+  .deliv .dchk{width:28px;height:28px;border-radius:8px;background:#DCFCE7;color:#166534;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .deliv .dt{font-family:var(--display);font-weight:700;font-size:.78rem;color:var(--ink)}
+  .deliv .ds{font-size:.64rem;color:var(--slate)}
+  @keyframes floaty{to{transform:translateY(-10px)}}
+  .inbox,.deliv{opacity:0;transform:translateY(14px);animation:popin .7s ease-out forwards}
+  .inbox{animation-delay:.3s}.deliv{animation-delay:.9s,1.5s}
+  @keyframes popin{to{opacity:1;transform:translateY(0)}}
+  @media (prefers-reduced-motion:reduce){.inbox,.deliv{animation:none !important;opacity:1 !important;transform:none !important}}
   .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
   .soon-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
 
@@ -132,14 +164,52 @@
 
 <!-- SERVICE HERO -->
 <section class="s-hero">
-  <div class="wrap inner">
-    <!-- include .soon-badge only for not-yet-live services like text-back -->
-    <div class="ic">📧</div>
-    <h1>Make sure your invoices <em>actually get seen.</em></h1>
-    <p>If your quotes and invoices land in a customer's spam folder, they don't get seen &mdash; and you don't get paid. We set up your email the right way so what you send reaches the inbox, every time.</p>
-    <div class="actions">
-      <a href="/#contact" class="btn">Get a quote</a>
-      <a href="/#services" class="ghost">See all services</a>
+  <div class="hero-cols">
+    <div class="inner">
+      <div class="ic">📧</div>
+      <h1>Make sure your invoices <em>actually get seen.</em></h1>
+      <p>If your quotes and invoices land in a customer's spam folder, they don't get seen &mdash; and you don't get paid. We set up your email the right way so what you send reaches the inbox, every time.</p>
+      <div class="actions">
+        <a href="/#contact" class="btn">Get a quote</a>
+        <a href="/#services" class="ghost">See all services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="inbox">
+        <div class="inbox-bar">
+          <span class="it"><span class="ic-in">📥</span> Inbox</span>
+          <span class="ct">3 new</span>
+        </div>
+        <div class="mail unread">
+          <div class="ava" style="background:linear-gradient(135deg,var(--signal),var(--signal-dark))">YH</div>
+          <div class="mbody">
+            <div class="mtop"><span class="mfrom">Your HVAC Co.</span><span class="mtime">2:32 PM</span></div>
+            <div class="msub">Invoice #1042 — AC Repair</div>
+            <div class="mprev">Thanks for your business! Your invoice is attached…</div>
+            <span class="tag-inbox">✓ Inbox &middot; not spam</span>
+          </div>
+        </div>
+        <div class="mail">
+          <div class="ava" style="background:#7C8DA6">RC</div>
+          <div class="mbody">
+            <div class="mtop"><span class="mfrom">Regional Supply Co.</span><span class="mtime">11:08 AM</span></div>
+            <div class="msub">Your order has shipped</div>
+            <div class="mprev">Order #88231 is on the way…</div>
+          </div>
+        </div>
+        <div class="mail">
+          <div class="ava" style="background:#5BA88A">GM</div>
+          <div class="mbody">
+            <div class="mtop"><span class="mfrom">Google Reviews</span><span class="mtime">9:15 AM</span></div>
+            <div class="msub">You have a new 5-star review</div>
+            <div class="mprev">"Fast and professional, highly recommend…"</div>
+          </div>
+        </div>
+        <div class="deliv">
+          <div class="dchk">✓</div>
+          <div><div class="dt">Delivered</div><div class="ds">Inbox, not spam</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
