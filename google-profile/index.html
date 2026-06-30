@@ -24,7 +24,13 @@
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
   .eyebrow{font-family:var(--display);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal-dark)}
 
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease}
+  header.scrolled{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header:not(.scrolled) .brand .nm{color:#fff}
+  header:not(.scrolled) .nav-links > a,header:not(.scrolled) .has-drop > a{color:rgba(255,255,255,.85)}
+  header:not(.scrolled) .nav-links > a:hover,header:not(.scrolled) .has-drop > a:hover{color:#fff}
+  header:not(.scrolled) .has-drop > a::after{color:rgba(255,255,255,.7)}
+  header:not(.scrolled) .login-link{color:rgba(255,255,255,.85);border-left-color:rgba(255,255,255,.25)}
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
   .brand{display:inline-flex;flex-direction:column;line-height:1;font-family:var(--display)}
   .brand .nm{font-weight:700;font-size:1.34rem;letter-spacing:-0.02em}
@@ -53,14 +59,20 @@
   .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 
   /* service hero */
-  .s-hero{background:linear-gradient(170deg,var(--paper) 0%,#fff 72%);padding:72px 0 60px;border-bottom:1px solid var(--line)}
+  .s-hero{position:relative;background:#0B1626;padding:104px 0 64px;overflow:hidden;isolation:isolate}
+  .s-hero::before{content:"";position:absolute;inset:0;z-index:-3;background:linear-gradient(125deg,#0B1626 0%,#122236 50%,#16263F 100%)}
+  .s-hero .glow{position:absolute;border-radius:50%;filter:blur(64px);z-index:-2;opacity:0;animation:gin 2.4s ease-out forwards}
+  .s-hero .glow.a{width:460px;height:460px;background:radial-gradient(circle,rgba(242,134,75,.4),transparent 68%);top:-60px;right:2%;animation-delay:.2s}
+  .s-hero .glow.b{width:320px;height:320px;background:radial-gradient(circle,rgba(70,130,200,.26),transparent 70%);bottom:-60px;right:26%;animation-delay:.5s}
+  .s-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 28% 50%,transparent 52%,rgba(6,12,22,.5) 100%);pointer-events:none}
+  @keyframes gin{from{opacity:0;transform:scale(1.2)}to{opacity:1;transform:scale(1)}}
   .s-hero .inner{max-width:42em}
-  .s-hero .ic{width:60px;height:60px;border-radius:14px;background:#FCEEE4;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px}
-  .s-hero h1{font-size:clamp(2.1rem,4.6vw,3.1rem);font-weight:700;line-height:1.06;margin-bottom:18px}
+  .s-hero .ic{width:60px;height:60px;border-radius:14px;background:rgba(242,134,75,.18);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:20px}
+  .s-hero h1{font-size:clamp(2.1rem,4.6vw,3.1rem);font-weight:700;line-height:1.06;margin-bottom:18px;color:#fff}
   .s-hero h1 em{font-style:normal;color:var(--signal)}
-  .s-hero p{color:var(--slate);font-size:1.16rem;max-width:32em;margin-bottom:28px}
+  .s-hero p{color:rgba(255,255,255,.82);font-size:1.16rem;max-width:32em;margin-bottom:28px}
   .s-hero .actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-  .s-hero .hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  .s-hero .hero-cols{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1080px;margin:0 auto;padding:0 24px}
   .s-hero .hero-cols .inner{max-width:none;margin:0;padding:0}
   .s-hero .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;padding:10px 18px}
   @media (max-width:880px){ .s-hero .hero-cols{grid-template-columns:1fr;gap:36px} .s-hero .hero-visual{order:2} }
@@ -91,7 +103,7 @@
   .gbp{animation-delay:.3s}.gbp-mng{animation-delay:.9s,1.5s}
   @keyframes popin{to{opacity:1;transform:translateY(0)}}
   @media (prefers-reduced-motion:reduce){.gbp,.gbp-mng{animation:none !important;opacity:1 !important;transform:none !important}}
-  .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--ink);padding:11px 4px;border-bottom:2px solid var(--signal)}
+  .s-hero .ghost{font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;padding:11px 4px;border-bottom:2px solid var(--signal)}
   .soon-badge{display:inline-flex;align-items:center;gap:5px;background:#FCEEE4;color:#7A3A14;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:16px}
 
   section{padding:72px 0}
@@ -107,7 +119,11 @@
   .feat p{color:var(--slate);font-size:.97rem}
 
   /* benefit list block */
-  .benefits{background:var(--paper)}
+  .benefits{background:#16263F;position:relative}
+  .benefits .eyebrow{color:var(--signal)}
+  .benefits h2{color:#fff !important}
+  .benefits .benefit-grid p{color:rgba(255,255,255,.8)}
+  .benefits .blist li{color:#fff}
   .benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
   .benefit-grid p{color:var(--slate);font-size:1.05rem;margin-bottom:16px}
   .blist{list-style:none;display:flex;flex-direction:column;gap:13px}
@@ -120,7 +136,8 @@
   .cta h2 em{font-style:normal;color:var(--signal)}
   .cta p{color:#b6c2d4;font-size:1.08rem;max-width:30em;margin:0 auto 26px}
 
-  footer{border-top:1px solid var(--line);padding:40px 0;font-size:.92rem;color:var(--slate)}
+  footer{background:#0B1626;border-top:1px solid rgba(255,255,255,.08);padding:40px 0;font-size:.92rem;color:rgba(255,255,255,.6)}
+  footer .brand .nm{color:#fff}
   .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 
   @media (max-width:860px){
@@ -163,6 +180,7 @@
 
 <!-- SERVICE HERO -->
 <section class="s-hero">
+  <span class="glow a"></span><span class="glow b"></span>
   <div class="hero-cols">
     <div class="inner">
       <div class="ic">📍</div>
@@ -256,5 +274,6 @@
   </div>
 </footer>
 
+<script>(function(){var h=document.querySelector('header');function o(){if(window.scrollY>40){h.classList.add('scrolled')}else{h.classList.remove('scrolled')}}window.addEventListener('scroll',o,{passive:true});o();})();</script>
 </body>
 </html>
